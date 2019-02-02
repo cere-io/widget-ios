@@ -17,13 +17,21 @@ public class WidgetViewController: UIViewController {
     
     private let env: Environment = Environment.STAGE;
     private let mode: WidgetMode = WidgetMode.REWARDS;
+    private var appId: String = "";
+    private var userId: String = "";
+    private var sections: [String] = [];
     
     public override func viewDidLoad() {
         super.viewDidLoad();
         do {
             let template = try loadHtmlTemplate();
             let content = insertParametersToTemplate(template,
-                                                     sdkUrl: env.sdkURL);
+                                                     widgetUrl: env.sdkURL + Environment.bundleJsPath,
+                                                     userId: self.userId,
+                                                     appId: self.appId,
+                                                     env: self.env.name,
+                                                     mode: String(describing: self.mode).lowercased(),
+                                                     sections: self.sections.joined(separator: ", "));
             self.webView!.loadHTMLString(content, baseURL: URL(string: env.sdkURL)!);
         } catch {
             print("Can not initialize widget");
@@ -41,6 +49,12 @@ public class WidgetViewController: UIViewController {
         self.view = self.webView;
         
         attachBridge();
+    }
+    
+    public func initParameters(userId: String, appId: String, sections: [String]) {
+        self.userId = userId;
+        self.appId = appId;
+        self.sections = sections;
     }
     
     public func show(_ parent: UIViewController) {
@@ -72,14 +86,19 @@ public class WidgetViewController: UIViewController {
     }
     
     func insertParametersToTemplate(_ template: String,
-                                    sdkUrl: String) -> String {
+                                    widgetUrl: String,
+                                    userId: String,
+                                    appId: String,
+                                    env: String,
+                                    mode: String,
+                                    sections: String) -> String {
         return template
-            .replacingOccurrences(of: "::widgetUrl::", with: sdkUrl + Environment.bundleJsPath)
-            .replacingOccurrences(of: "::userId::", with: "")
-            .replacingOccurrences(of: "::appId::", with: "")
-            .replacingOccurrences(of: "::env::", with: "")
-            .replacingOccurrences(of: "::mode::", with: "")
-            .replacingOccurrences(of: "::sections::", with: "");
+            .replacingOccurrences(of: "::widgetUrl::", with: widgetUrl)
+            .replacingOccurrences(of: "::userId::", with: userId)
+            .replacingOccurrences(of: "::appId::", with: appId)
+            .replacingOccurrences(of: "::env::", with: env)
+            .replacingOccurrences(of: "::mode::", with: mode)
+            .replacingOccurrences(of: "::sections::", with: sections);
     }
     
     public override func didReceiveMemoryWarning() {
