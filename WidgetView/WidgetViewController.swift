@@ -65,6 +65,11 @@ public class WidgetViewController: UIViewController {
         self.didMove(toParentViewController: self);
     }
     
+    public func resize(width: CGFloat, height: CGFloat) {
+        self.webView?.frame.size.height = height;
+        self.webView?.frame.size.width = width;
+    }
+    
     func attachBridge() {
         self.bridge = WebViewJavascriptBridge(forWebView: webView);
         
