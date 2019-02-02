@@ -66,8 +66,8 @@
         bridge.callHandler('getNativeStorageItem', ['test'], function(response) {});
 
         
-        NativeStorage.setItem('testKey', 'value3');
-        NativeStorage.getItem('testKey');
+        NativeStorage.setItem('testKey', {key: "value"});
+        console.log(NativeStorage.getItem('testKey'));
       });
     
       window.widget = {

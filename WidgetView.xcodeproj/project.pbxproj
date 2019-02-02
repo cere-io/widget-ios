@@ -20,6 +20,8 @@
 		B5EB4F25220470C2004EA1B5 /* JSCallbackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F24220470C2004EA1B5 /* JSCallbackList.swift */; };
 		B5EB4F2722047C3E004EA1B5 /* InitializedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2622047C3E004EA1B5 /* InitializedWrapper.swift */; };
 		B5EB4F2A22048ECD004EA1B5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = B5EB4F2922048ECC004EA1B5 /* index.html */; };
+		B5EB4F2C2204F251004EA1B5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2B2204F251004EA1B5 /* Environment.swift */; };
+		B5EB4F2E2206411C004EA1B5 /* WidgetMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		B5EB4F24220470C2004EA1B5 /* JSCallbackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSCallbackList.swift; sourceTree = "<group>"; };
 		B5EB4F2622047C3E004EA1B5 /* InitializedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializedWrapper.swift; sourceTree = "<group>"; };
 		B5EB4F2922048ECC004EA1B5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		B5EB4F2B2204F251004EA1B5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMode.swift; sourceTree = "<group>"; };
 		D9F6E87649D2BF09C647C176 /* Pods_WidgetView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +109,8 @@
 				B5EB4EC022033530004EA1B5 /* WidgetView.h */,
 				B5EB4EC122033530004EA1B5 /* Info.plist */,
 				B5EB4EDE220344C0004EA1B5 /* WidgetViewController.swift */,
+				B5EB4F2B2204F251004EA1B5 /* Environment.swift */,
+				B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */,
 			);
 			path = WidgetView;
 			sourceTree = "<group>";
@@ -351,6 +357,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5EB4F0E22044D55004EA1B5 /* JSProtocolWithResponse.swift in Sources */,
+				B5EB4F2C2204F251004EA1B5 /* Environment.swift in Sources */,
+				B5EB4F2E2206411C004EA1B5 /* WidgetMode.swift in Sources */,
 				B5EB4F0C22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift in Sources */,
 				B5EB4F2722047C3E004EA1B5 /* InitializedWrapper.swift in Sources */,
 				B5EB4F0A22044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift in Sources */,

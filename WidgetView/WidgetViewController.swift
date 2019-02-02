@@ -12,19 +12,19 @@ import WebKit
 import WebViewJavascriptBridge
 
 public class WidgetViewController: UIViewController {
-    public var webView: WKWebView?;
-    public var viewUrl = "";
+    var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
+    
+    private let env: Environment = Environment.STAGE;
+    private let mode: WidgetMode = WidgetMode.REWARDS;
     
     public override func viewDidLoad() {
         super.viewDidLoad();
         do {
-            if viewUrl != "" {
-                let path = Bundle(for: type(of: self)).path(forResource: "index", ofType: "html");
-                let content = try String(contentsOfFile: path!,
-                                         encoding: String.Encoding.utf8);
-            self.webView!.loadHTMLString(content, baseURL: URL(string: viewUrl)!);
-        }
+            let template = try loadHtmlTemplate();
+            let content = insertParametersToTemplate(template,
+                                                     sdkUrl: env.sdkURL);
+            self.webView!.loadHTMLString(content, baseURL: URL(string: env.sdkURL)!);
         } catch {
             print("Can not initialize widget");
         }
@@ -43,6 +43,14 @@ public class WidgetViewController: UIViewController {
         attachBridge();
     }
     
+    public func show(_ parent: UIViewController) {
+        parent.addChildViewController(self);
+        self.beginAppearanceTransition(true, animated: true)
+        parent.view.addSubview(self.webView!);
+        self.endAppearanceTransition();
+        self.didMove(toParentViewController: self);
+    }
+    
     func attachBridge() {
         self.bridge = WebViewJavascriptBridge(forWebView: webView);
         
@@ -53,6 +61,25 @@ public class WidgetViewController: UIViewController {
                 jsCallback.value.handleEvent(data as AnyObject, responseCallback: responseCallback);
             })
         }
+    }
+    
+    func loadHtmlTemplate() throws -> String {
+        let path = Bundle(for: type(of: self)).path(forResource: "index", ofType: "html");
+        let content = try String(contentsOfFile: path!,
+                             encoding: String.Encoding.utf8);
+        
+        return content;
+    }
+    
+    func insertParametersToTemplate(_ template: String,
+                                    sdkUrl: String) -> String {
+        return template
+            .replacingOccurrences(of: "::widgetUrl::", with: sdkUrl + Environment.bundleJsPath)
+            .replacingOccurrences(of: "::userId::", with: "")
+            .replacingOccurrences(of: "::appId::", with: "")
+            .replacingOccurrences(of: "::env::", with: "")
+            .replacingOccurrences(of: "::mode::", with: "")
+            .replacingOccurrences(of: "::sections::", with: "");
     }
     
     public override func didReceiveMemoryWarning() {
