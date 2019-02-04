@@ -11,5 +11,5 @@ import Foundation
 class JsProtocolWithResponse {
     typealias ResponseCallback = ((Any?) -> Swift.Void)?
     
-    func handleEvent(_ body : AnyObject, responseCallback: ResponseCallback){}
+    func handleEvent(widget: WidgetViewController, data: AnyObject, responseCallback: ResponseCallback){}
 }

@@ -62,12 +62,11 @@
         }
                                    
         // For test only:
-        bridge.callHandler('initialized', {}, function(response) {});
-        bridge.callHandler('getNativeStorageItem', ['test'], function(response) {});
+        //bridge.callHandler('initialized', {}, function(response) {});
+        //bridge.callHandler('getNativeStorageItem', ['test'], function(response) {});
 
-        
-        NativeStorage.setItem('testKey', {key: "value"});
-        console.log(NativeStorage.getItem('testKey'));
+        //NativeStorage.setItem('testKey', {key: "value"});
+        //console.log(NativeStorage.getItem('testKey'));
       });
     
       window.widget = {

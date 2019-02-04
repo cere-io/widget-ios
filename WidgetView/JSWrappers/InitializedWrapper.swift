@@ -9,8 +9,8 @@
 import Foundation
 
 class InitializedWrapper : JsProtocolWithResponse {
-    override func handleEvent(_ body: AnyObject, responseCallback: ResponseCallback) {
-        print("Widget Initialized");
+    override func handleEvent(widget: WidgetViewController, data: AnyObject, responseCallback: ResponseCallback) {
+        widget.setInitialized();
             
         responseCallback?(nil);
     }

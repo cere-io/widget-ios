@@ -17,7 +17,7 @@ internal struct Environment {
     public let name: String;
     public let sdkURL: String;
     public let widgetURL: String;
-    public static let bundleJsPath = "/static/js/bundle.js";
+    public static let bundleJSPath = "/static/js/bundle.js";
     
     init(_ name: String, _ sdkURL: String, _ widgetURL: String) {
         self.name = name;
