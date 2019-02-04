@@ -17,12 +17,15 @@ public class WidgetViewController: UIViewController {
     var parentController: UIViewController?;
 
     private let env: Environment = Environment.STAGE;
-    private let mode: WidgetMode = WidgetMode.REWARDS;
+    private var mode: WidgetMode = WidgetMode.REWARDS;
     private var appId: String = "";
     private var userId: String = "";
     private var sections: [String] = [];
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
+    
+    public var defaultWidth: Int = 0;
+    public var defaultHeight: Int = 0;
     
     public override func viewDidLoad() {
         super.viewDidLoad();
@@ -51,9 +54,109 @@ public class WidgetViewController: UIViewController {
         return self;
     }
     
+    public func hide() -> WidgetViewController {
+        self.queueHandler({() in
+            self.setView(visible: false);
+            self.executeJS(method: "hide");
+        });
+    
+    return self;
+    }
+
+    public func sendDataToField(fieldName: String, value: String) -> WidgetViewController {
+        self.queueHandler({() in
+            self.executeJS(method: "sendToField", withParams: "'\(fieldName)', '\(value)'");
+        });
+    
+        return self;
+    }
+
+    public func setMode(mode: WidgetMode) -> WidgetViewController {
+        self.mode = mode;
+        
+        self.queueHandler({() in
+            self.executeJS(method: "setMode", withParams: "'\(String(describing: self.mode).lowercased())'");
+        });
+    
+        return self;
+    }
+    
+    public func setUserData(data: String) -> WidgetViewController {
+        self.queueHandler({() in
+            self.executeJS(method: "setUserData", withParams: data);
+        });
+    
+        return self;
+    }
+    
+    public func collapse() -> WidgetViewController {
+        self.queueHandler({() in
+            self.executeJS(method: "collapse");
+        });
+        
+        return self;
+    }
+    
+    public func expand() -> WidgetViewController {
+        self.queueHandler({() in
+            self.executeJS(method: "expand");
+        });
+        
+        return self;
+    }
+    
     public func resize(width: CGFloat, height: CGFloat) {
         self.webView?.frame.size.height = height;
         self.webView?.frame.size.width = width;
+    }
+    
+    public func logout() {
+        self.queueHandler({() in
+            self.bridge?.callHandler("logout");
+        });
+    }
+    
+    public func onHide(_ handler: @escaping OnHideHandler) -> WidgetViewController {
+        self.bridge?.registerHandler("onHide",
+                                     handler: OnHideHandlerMapper(handler).map());
+
+        return self;
+    }
+    
+    public func onSignUp(_ handler: @escaping OnSignUpHandler) -> WidgetViewController {
+        self.bridge?.registerHandler("onSignUp",
+                                     handler: OnSignUpHandlerMapper(handler).map());
+        
+        return self;
+    }
+    
+    public func onSignIn(_ handler: @escaping OnSignInHandler) -> WidgetViewController {
+        self.bridge?.registerHandler("onSignIn",
+                                     handler: OnSignInHandlerMapper(handler).map());
+        
+        return self;
+    }
+    
+    public func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> WidgetViewController {
+        self.bridge?.registerHandler("onProcessNonFungibleReward",
+                                     handler: OnProcessNonFungibleRewardHandlerMapper(handler).map());
+        
+        return self;
+    }
+    
+    public func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> WidgetViewController {
+        self.bridge?.registerHandler("onGetClaimedRewards",
+                                     handler: OnGetClaimedRewardsHandlerMapper(handler).map());
+    
+    return self;
+    }
+    
+    
+    public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> WidgetViewController {
+        self.bridge?.registerHandler("onGetUserByEmail",
+                                     handler: OnGetUserByEmailHandlerMapper(handler).map());
+        
+        return self;
     }
     
     func queueHandler(_ handler: @escaping () -> Void) {

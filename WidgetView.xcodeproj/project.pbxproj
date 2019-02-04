@@ -22,6 +22,14 @@
 		B5EB4F2A22048ECD004EA1B5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = B5EB4F2922048ECC004EA1B5 /* index.html */; };
 		B5EB4F2C2204F251004EA1B5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2B2204F251004EA1B5 /* Environment.swift */; };
 		B5EB4F2E2206411C004EA1B5 /* WidgetMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */; };
+		B5EB4F302208671C004EA1B5 /* CustomHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2F2208671C004EA1B5 /* CustomHandlers.swift */; };
+		B5EB4F33220870E3004EA1B5 /* OnHideHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F32220870E3004EA1B5 /* OnHideHandlerMapper.swift */; };
+		B5EB4F35220875B8004EA1B5 /* OnSignUpHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F34220875B8004EA1B5 /* OnSignUpHandlerMapper.swift */; };
+		B5EB4F3722087E6A004EA1B5 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3622087E6A004EA1B5 /* Helpers.swift */; };
+		B5EB4F3922088533004EA1B5 /* OnSignInHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3822088533004EA1B5 /* OnSignInHandlerMapper.swift */; };
+		B5EB4F3B2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3A2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift */; };
+		B5EB4F3E22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3D22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift */; };
+		B5EB4F4022089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3F22089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +64,14 @@
 		B5EB4F2922048ECC004EA1B5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		B5EB4F2B2204F251004EA1B5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMode.swift; sourceTree = "<group>"; };
+		B5EB4F2F2208671C004EA1B5 /* CustomHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHandlers.swift; sourceTree = "<group>"; };
+		B5EB4F32220870E3004EA1B5 /* OnHideHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnHideHandlerMapper.swift; sourceTree = "<group>"; };
+		B5EB4F34220875B8004EA1B5 /* OnSignUpHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnSignUpHandlerMapper.swift; sourceTree = "<group>"; };
+		B5EB4F3622087E6A004EA1B5 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		B5EB4F3822088533004EA1B5 /* OnSignInHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnSignInHandlerMapper.swift; sourceTree = "<group>"; };
+		B5EB4F3A2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnProcessNonFungibleRewardHandlerMapper.swift; sourceTree = "<group>"; };
+		B5EB4F3D22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGetClaimedRewardsHandlerMapper.swift; sourceTree = "<group>"; };
+		B5EB4F3F22089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGetUserByEmailHandlerMapper.swift; sourceTree = "<group>"; };
 		D9F6E87649D2BF09C647C176 /* Pods_WidgetView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +119,7 @@
 		B5EB4EBF22033530004EA1B5 /* WidgetView */ = {
 			isa = PBXGroup;
 			children = (
+				B5EB4F31220870CD004EA1B5 /* Handlers */,
 				B5EB4F2822048D1F004EA1B5 /* Assets */,
 				B5EB4F1122045225004EA1B5 /* Services */,
 				B5EB4F0822044C91004EA1B5 /* JSWrappers */,
@@ -150,6 +167,29 @@
 				B5EB4F2922048ECC004EA1B5 /* index.html */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		B5EB4F31220870CD004EA1B5 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				B5EB4F3C22088818004EA1B5 /* Mappers */,
+				B5EB4F3622087E6A004EA1B5 /* Helpers.swift */,
+				B5EB4F2F2208671C004EA1B5 /* CustomHandlers.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		B5EB4F3C22088818004EA1B5 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				B5EB4F32220870E3004EA1B5 /* OnHideHandlerMapper.swift */,
+				B5EB4F34220875B8004EA1B5 /* OnSignUpHandlerMapper.swift */,
+				B5EB4F3822088533004EA1B5 /* OnSignInHandlerMapper.swift */,
+				B5EB4F3A2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift */,
+				B5EB4F3D22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift */,
+				B5EB4F3F22089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		BC5CC341591469FD111B5B9A /* Frameworks */ = {
@@ -291,6 +331,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WidgetViewTests/Pods-WidgetViewTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -298,6 +339,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,13 +398,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EB4F3922088533004EA1B5 /* OnSignInHandlerMapper.swift in Sources */,
 				B5EB4F0E22044D55004EA1B5 /* JSProtocolWithResponse.swift in Sources */,
 				B5EB4F2C2204F251004EA1B5 /* Environment.swift in Sources */,
 				B5EB4F2E2206411C004EA1B5 /* WidgetMode.swift in Sources */,
 				B5EB4F0C22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift in Sources */,
 				B5EB4F2722047C3E004EA1B5 /* InitializedWrapper.swift in Sources */,
+				B5EB4F3722087E6A004EA1B5 /* Helpers.swift in Sources */,
+				B5EB4F302208671C004EA1B5 /* CustomHandlers.swift in Sources */,
+				B5EB4F3E22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift in Sources */,
 				B5EB4F0A22044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift in Sources */,
 				B5EB4EDF220344C0004EA1B5 /* WidgetViewController.swift in Sources */,
+				B5EB4F35220875B8004EA1B5 /* OnSignUpHandlerMapper.swift in Sources */,
+				B5EB4F33220870E3004EA1B5 /* OnHideHandlerMapper.swift in Sources */,
+				B5EB4F3B2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift in Sources */,
+				B5EB4F4022089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift in Sources */,
 				B5EB4F1322045232004EA1B5 /* KeychainService.swift in Sources */,
 				B5EB4F25220470C2004EA1B5 /* JSCallbackList.swift in Sources */,
 			);

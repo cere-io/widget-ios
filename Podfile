@@ -6,8 +6,9 @@ target 'WidgetView' do
   # Pods for WidgetView
   pod 'WebViewJavascriptBridge', '~>6.0'
   pod 'KeychainAccess'
+  pod 'SwiftyJSON'
 
-  target 'WidgetViewTests' do
+target 'WidgetViewTests' do
     inherit! :search_paths
     # Pods for testing
   end
