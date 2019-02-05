@@ -60,7 +60,7 @@ public class WidgetViewController: UIViewController {
             self.executeJS(method: "hide");
         });
     
-    return self;
+        return self;
     }
 
     public func sendDataToField(fieldName: String, value: String) -> WidgetViewController {
@@ -117,44 +117,56 @@ public class WidgetViewController: UIViewController {
     }
     
     public func onHide(_ handler: @escaping OnHideHandler) -> WidgetViewController {
-        self.bridge?.registerHandler("onHide",
-                                     handler: OnHideHandlerMapper(handler).map());
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onHide",
+                                         handler: OnHideHandlerMapper(handler).map());
+        });
 
         return self;
     }
     
     public func onSignUp(_ handler: @escaping OnSignUpHandler) -> WidgetViewController {
-        self.bridge?.registerHandler("onSignUp",
-                                     handler: OnSignUpHandlerMapper(handler).map());
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onSignUp",
+                                         handler: OnSignUpHandlerMapper(handler).map());
+        });
         
         return self;
     }
     
     public func onSignIn(_ handler: @escaping OnSignInHandler) -> WidgetViewController {
-        self.bridge?.registerHandler("onSignIn",
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onSignIn",
                                      handler: OnSignInHandlerMapper(handler).map());
+        });
         
         return self;
     }
     
     public func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> WidgetViewController {
-        self.bridge?.registerHandler("onProcessNonFungibleReward",
-                                     handler: OnProcessNonFungibleRewardHandlerMapper(handler).map());
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onProcessNonFungibleReward",
+                                         handler: OnProcessNonFungibleRewardHandlerMapper(handler).map());
+        });
         
         return self;
     }
     
     public func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> WidgetViewController {
-        self.bridge?.registerHandler("onGetClaimedRewards",
-                                     handler: OnGetClaimedRewardsHandlerMapper(handler).map());
-    
-    return self;
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onGetClaimedRewards",
+                                         handler: OnGetClaimedRewardsHandlerMapper(handler).map());
+        });
+        
+        return self;
     }
     
     
     public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> WidgetViewController {
-        self.bridge?.registerHandler("onGetUserByEmail",
-                                     handler: OnGetUserByEmailHandlerMapper(handler).map());
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onGetUserByEmail",
+                                         handler: OnGetUserByEmailHandlerMapper(handler).map());
+        });
         
         return self;
     }

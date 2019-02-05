@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum WidgetMode {
-    case LOGIN
-    case REWARDS
+public enum WidgetMode : String {
+    case LOGIN = "LOGIN"
+    case REWARDS = "REWARDS"
 }
