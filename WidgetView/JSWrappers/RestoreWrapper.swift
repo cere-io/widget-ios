@@ -1,17 +1,17 @@
 //
-//  InitializedWrapper.swift
+//  RestoreWrapper.swift
 //  WidgetView
 //
-//  Created by Konstantin on 2/1/19.
+//  Created by Konstantin on 2/6/19.
 //  Copyright © 2019 Funler LLC. All rights reserved.
 //
 
 import Foundation
 
-class InitializedWrapper : JsProtocolWithResponse {
+class RestoreWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: WidgetViewController, data: AnyObject, responseCallback: ResponseCallback) {
-        widget.setInitialized();
-
+        widget.restore();
+        
         responseCallback?(nil);
     }
 }

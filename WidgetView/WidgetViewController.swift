@@ -24,8 +24,8 @@ public class WidgetViewController: UIViewController {
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
     
-    public var defaultWidth: Int = 0;
-    public var defaultHeight: Int = 0;
+    public var defaultFrame: CGRect?;
+    public var frameGapFactor: CGFloat = 0.05; // Should be between 0 .. 0.5.
     
     public override func viewDidLoad() {
         super.viewDidLoad();
@@ -36,6 +36,10 @@ public class WidgetViewController: UIViewController {
     }
     
     public func initAndLoad(parentController: UIViewController, userId: String, appId: String, sections: [String]) {
+        if (widgetInitialized) {
+            return;
+        }
+
         self.parentController = parentController;
         self.userId = userId;
         self.appId = appId;
@@ -47,8 +51,6 @@ public class WidgetViewController: UIViewController {
     public func show() -> WidgetViewController {
         self.queueHandler({() in
             self.setView(visible: true);
-        
-            self.executeJS(method: "expand");
         });
         
         return self;
@@ -57,7 +59,6 @@ public class WidgetViewController: UIViewController {
     public func hide() -> WidgetViewController {
         self.queueHandler({() in
             self.setView(visible: false);
-            self.executeJS(method: "hide");
         });
     
         return self;
@@ -91,7 +92,7 @@ public class WidgetViewController: UIViewController {
     
     public func collapse() -> WidgetViewController {
         self.queueHandler({() in
-            self.executeJS(method: "collapse");
+            self.setView(visible: false);
         });
         
         return self;
@@ -99,7 +100,17 @@ public class WidgetViewController: UIViewController {
     
     public func expand() -> WidgetViewController {
         self.queueHandler({() in
-            self.executeJS(method: "expand");
+            let s = UIScreen.main.bounds;
+
+            self.webView?.frame = s;
+        });
+        
+        return self;
+    }
+
+    public func restore() -> WidgetViewController {
+        self.queueHandler({() in
+            self.webView?.frame = self.defaultFrame!;
         });
         
         return self;
@@ -187,6 +198,10 @@ public class WidgetViewController: UIViewController {
             self.endAppearanceTransition();
             
             self.didMove(toParentViewController: self);
+        } else {
+            self.willMove(toParentViewController: nil);
+            self.view.removeFromSuperview();
+            self.removeFromParentViewController();
         }
     }
     
@@ -199,9 +214,13 @@ public class WidgetViewController: UIViewController {
     func load() {
         let configuration = WKWebViewConfiguration();
         let s = UIScreen.main.bounds;
-        let viewSize = CGRect(x: 0, y: s.minY + 0, width: s.width, height: s.height);
         
-        self.webView = WKWebView(frame: viewSize, configuration: configuration);
+        defaultFrame = CGRect(x: s.minX + s.width * frameGapFactor,
+                              y: s.minY + s.height * frameGapFactor,
+                              width: s.width - 2 * s.width * frameGapFactor,
+                              height: s.height - 2 * s.height * frameGapFactor);
+        
+        self.webView = WKWebView(frame: defaultFrame!, configuration: configuration);
         self.view = self.webView;
         
         attachBridge();

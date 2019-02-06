@@ -22,9 +22,9 @@ class OnSignUpHandlerMapper {
             let json = JSON(arrayLiteral: data!);
         
             self.handler(
-                json["email"].stringValue,
-                json["token"].stringValue,
-                json["password"].stringValue,
+                json[0]["email"].stringValue,
+                json[0]["token"].stringValue,
+                json[0]["password"].stringValue,
                 Helpers.prepareExtras(json)
             );
             

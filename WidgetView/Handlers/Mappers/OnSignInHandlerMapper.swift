@@ -22,8 +22,8 @@ class OnSignInHandlerMapper {
             let json = JSON(arrayLiteral: data!);
             
             self.handler(
-                json["email"].stringValue,
-                json["token"].stringValue,
+                json[0]["email"].stringValue,
+                json[0]["token"].stringValue,
                 Helpers.prepareExtras(json)
             );
             

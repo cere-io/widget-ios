@@ -12,4 +12,10 @@ let JSCallbackList: [String: JsProtocolWithResponse] = [
     "setNativeStorageItem": SetNativeStorageItemWrapper(),
     "getNativeStorageItem": GetNativeStorageItemWrapper(),
     "initialized": InitializedWrapper(),
+    "collapse": CollapseWrapper(),
+    "expand": ExpandWrapper(),
+    "restore": RestoreWrapper(),
+    "show": ShowWrapper(),
+    "hide": HideWrapper(),
+    "logout": LogoutWrapper(),
 ];
