@@ -44,6 +44,7 @@ public class WidgetViewController: UIViewController {
         self.userId = userId;
         self.appId = appId;
         self.sections = sections;
+        self.env = env;
         
         load();
     }
