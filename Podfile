@@ -1,14 +1,14 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '9.0'
 
-target 'WidgetView' do
+target 'CerebellumWidget' do
   use_frameworks!
-  # Pods for WidgetView
+  # Pods for CerebellumWidget
   pod 'WebViewJavascriptBridge', '~>6.0'
   pod 'KeychainAccess'
   pod 'SwiftyJSON'
 
-target 'WidgetViewTests' do
+target 'CerebellumWidgetTests' do
     inherit! :search_paths
     # Pods for testing
   end
