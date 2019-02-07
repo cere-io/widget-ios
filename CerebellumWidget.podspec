@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "9.0"
   
-  s.source       = { :git => "git@github.com:funler/widget-ios.git", :tag => "release-v1.0.0" }
+  s.source       = { :git => "git@github.com:funler/widget-ios.git", :tag => s.version }
 
   s.source_files  = "CerebellumWidget/**/*.swift"
   s.resources = "CerebellumWidget/Assets/*.html"
