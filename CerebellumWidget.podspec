@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "git@github.com:funler/widget-ios.git", :tag => "release-v1.0.0" }
 
   s.source_files  = "CerebellumWidget/**/*.swift"
+  s.resources = "CerebellumWidget/Assets/*.html"
 
   s.swift_version = "3" 
 
