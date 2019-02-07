@@ -8,8 +8,8 @@
 
 import Foundation
 
-internal struct Environment {
-    static let LOCAL: Environment = Environment("local", "", "");
+public struct Environment {
+    static let LOCAL: Environment = Environment("local", "http://192.168.100.2:3011", "http://192.168.100.2:3002");
     static let DEV1: Environment = Environment("dev1", "https://widget-sdk.dev.cere.io", "https://widget.dev.cere.io");
     static let STAGE: Environment = Environment("stage", "https://widget-sdk.stage.cere.io", "https://widget.stage.cere.io");
     static let PRODUCTION: Environment = Environment("production", "https://widget-sdk.cere.io", "https://widget.cere.io");

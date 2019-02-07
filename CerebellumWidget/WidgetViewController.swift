@@ -16,7 +16,7 @@ public class WidgetViewController: UIViewController {
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
 
-    private let env: Environment = Environment.PRODUCTION;
+    private var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
     private var appId: String = "";
     private var userId: String = "";
@@ -35,7 +35,7 @@ public class WidgetViewController: UIViewController {
         super.loadView();
     }
     
-    public func initAndLoad(parentController: UIViewController, userId: String, appId: String, sections: [String]) {
+    public func initAndLoad(parentController: UIViewController, userId: String, appId: String, sections: [String], env: Environment = Environment.PRODUCTION) {
         if (widgetInitialized) {
             return;
         }
