@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 import WebViewJavascriptBridge
 
-public class WidgetViewController: UIViewController {
+public class WidgetViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
@@ -27,8 +27,15 @@ public class WidgetViewController: UIViewController {
     public var defaultFrame: CGRect?;
     public var frameGapFactor: CGFloat = 0.05; // Should be between 0 .. 0.5.
     
+    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        
+        print("***************");
+        print("Web View Error:");
+        print(error.localizedDescription);
+    }
     public override func viewDidLoad() {
         super.viewDidLoad();
+        self.webView?.navigationDelegate = self;
     }
     
     public override func loadView() {
@@ -236,6 +243,8 @@ public class WidgetViewController: UIViewController {
                                                      mode: String(describing: self.mode).lowercased(),
                                                      sections: self.sections.joined(separator: ", "));
             self.webView!.loadHTMLString(content, baseURL: URL(string: env.sdkURL)!);
+
+            print(content);
         } catch {
             print("Can not initialize widget");
         }
