@@ -35,7 +35,6 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
     }
     public override func viewDidLoad() {
         super.viewDidLoad();
-        self.webView?.navigationDelegate = self;
     }
     
     public override func loadView() {
@@ -230,6 +229,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         
         self.webView = WKWebView(frame: defaultFrame!, configuration: configuration);
         self.view = self.webView;
+        self.webView?.navigationDelegate = self;
         
         attachBridge();
         
