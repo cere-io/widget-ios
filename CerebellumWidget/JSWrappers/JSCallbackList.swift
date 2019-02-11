@@ -19,4 +19,5 @@ let JSCallbackList: [String: JsProtocolWithResponse] = [
     "hide": HideWrapper(),
     "logout": LogoutWrapper(),
     "share": ShareWrapper(),
+    "shareWith": ShareWithWrapper(),
 ];

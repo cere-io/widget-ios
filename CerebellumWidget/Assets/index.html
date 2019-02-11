@@ -75,7 +75,6 @@
         env: '::env::',
         mode: '::mode::',
         sections: '::sections::'.split(','),
-        uiState: 'expanded',
       };
 
       console.log('Widget data', window.widget);
@@ -120,6 +119,13 @@
               env: window.widget.env,
               sections: window.widget.sections,
               mode: window.widget.mode,
+              uiState: 'expanded',
+              width: '100%',
+              height: '100%',
+              styles: {
+                top: 0,
+                left: 0,
+              },
               setStorageItem: function (key, value) {
                 return nativeStorage.setItem(key, value)
                   .then(processPromise);
