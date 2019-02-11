@@ -1,5 +1,5 @@
 //
-// CerebellumWidgetController.swift
+// CerebellumWidget.swift
 // CerebellumWidget
 //
 //  Created by Konstantin on 1/31/19.
@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 import WebViewJavascriptBridge
 
-public class WidgetViewController: UIViewController, WKNavigationDelegate {
+public class CerebellumWidget {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
@@ -26,20 +26,8 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
     
     public var defaultFrame: CGRect?;
     public var frameGapFactor: CGFloat = 0.05; // Should be between 0 .. 0.5.
-    
-    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        
-        print("***************");
-        print("Web View Error:");
-        print(error.localizedDescription);
-    }
-    public override func viewDidLoad() {
-        super.viewDidLoad();
-    }
-    
-    public override func loadView() {
-        super.loadView();
-    }
+
+    public init() {}
     
     public func initAndLoad(parentController: UIViewController, userId: String, appId: String, sections: [String], env: Environment = Environment.PRODUCTION) {
         if (widgetInitialized) {
@@ -55,72 +43,56 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         load();
     }
     
-    public func show() -> WidgetViewController {
+    public func show() {
         self.queueHandler({() in
             self.setView(visible: true);
         });
-        
-        return self;
     }
     
-    public func hide() -> WidgetViewController {
+    public func hide() {
         self.queueHandler({() in
             self.setView(visible: false);
         });
-    
-        return self;
     }
 
-    public func sendDataToField(fieldName: String, value: String) -> WidgetViewController {
+    public func sendDataToField(fieldName: String, value: String) {
         self.queueHandler({() in
             self.executeJS(method: "sendToField", withParams: "'\(fieldName)', '\(value)'");
         });
-    
-        return self;
     }
 
-    public func setMode(mode: WidgetMode) -> WidgetViewController {
+    public func setMode(mode: WidgetMode) {
         self.mode = mode;
         
         self.queueHandler({() in
             self.executeJS(method: "setMode", withParams: "'\(String(describing: self.mode).lowercased())'");
         });
-    
-        return self;
     }
     
-    public func setUserData(data: String) -> WidgetViewController {
+    public func setUserData(data: String) {
         self.queueHandler({() in
             self.executeJS(method: "setUserData", withParams: data);
         });
-    
-        return self;
     }
     
-    public func collapse() -> WidgetViewController {
+    public func collapse() {
         self.queueHandler({() in
             self.setView(visible: false);
         });
-        
-        return self;
     }
     
-    public func expand() -> WidgetViewController {
+    public func expand() {
         self.queueHandler({() in
             let s = UIScreen.main.bounds;
 
             self.webView?.frame = s;
         });
-        
-        return self;
     }
 
-    public func restore() -> WidgetViewController {
+    public func restore() {
         self.queueHandler({() in
             self.webView?.frame = self.defaultFrame!;
         });
-        
-        return self;
     }
     
     public func resize(width: CGFloat, height: CGFloat) {
@@ -134,7 +106,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         });
     }
     
-    public func onHide(_ handler: @escaping OnHideHandler) -> WidgetViewController {
+    public func onHide(_ handler: @escaping OnHideHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onHide",
                                          handler: OnHideHandlerMapper(handler).map());
@@ -143,7 +115,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         return self;
     }
     
-    public func onSignUp(_ handler: @escaping OnSignUpHandler) -> WidgetViewController {
+    public func onSignUp(_ handler: @escaping OnSignUpHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onSignUp",
                                          handler: OnSignUpHandlerMapper(handler).map());
@@ -152,7 +124,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         return self;
     }
     
-    public func onSignIn(_ handler: @escaping OnSignInHandler) -> WidgetViewController {
+    public func onSignIn(_ handler: @escaping OnSignInHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onSignIn",
                                      handler: OnSignInHandlerMapper(handler).map());
@@ -161,7 +133,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         return self;
     }
     
-    public func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> WidgetViewController {
+    public func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onProcessNonFungibleReward",
                                          handler: OnProcessNonFungibleRewardHandlerMapper(handler).map());
@@ -170,7 +142,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         return self;
     }
     
-    public func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> WidgetViewController {
+    public func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onGetClaimedRewards",
                                          handler: OnGetClaimedRewardsHandlerMapper(handler).map());
@@ -180,7 +152,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
     }
     
     
-    public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> WidgetViewController {
+    public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onGetUserByEmail",
                                          handler: OnGetUserByEmailHandlerMapper(handler).map());
@@ -198,18 +170,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
     }
     
     func setView(visible: Bool) {
-        if (visible) {
-            self.parentController!.addChildViewController(self);
-            self.beginAppearanceTransition(true, animated: true)
-            self.parentController!.view.addSubview(self.webView!);
-            self.endAppearanceTransition();
-            
-            self.didMove(toParentViewController: self);
-        } else {
-            self.willMove(toParentViewController: nil);
-            self.view.removeFromSuperview();
-            self.removeFromParentViewController();
-        }
+        self.webView!.frame = visible ? self.defaultFrame! : .zero;
     }
     
     func executeJS(method: String, withParams: String = "") {
@@ -227,9 +188,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
                               width: s.width - 2 * s.width * frameGapFactor,
                               height: s.height - 2 * s.height * frameGapFactor);
         
-        self.webView = WKWebView(frame: defaultFrame!, configuration: configuration);
-        self.view = self.webView;
-        self.webView?.navigationDelegate = self;
+        self.webView = WKWebView(frame: .zero, configuration: configuration);
         
         attachBridge();
         
@@ -244,7 +203,7 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
                                                      sections: self.sections.joined(separator: ", "));
             self.webView!.loadHTMLString(content, baseURL: URL(string: env.sdkURL)!);
 
-            print(content);
+            self.parentController!.view.addSubview(self.webView!);
         } catch {
             print("Can not initialize widget");
         }
@@ -297,9 +256,5 @@ public class WidgetViewController: UIViewController, WKNavigationDelegate {
         for handler in self.handlerQueue {
             handler();
         }
-    }
-    
-    public override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning();
     }
 }

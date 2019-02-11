@@ -14,7 +14,7 @@
 		B5EB4EC722033530004EA1B5 /* CerebellumWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EB4EBD22033530004EA1B5 /* CerebellumWidget.framework */; };
 		B5EB4ECC22033530004EA1B5 /* WidgetViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4ECB22033530004EA1B5 /* WidgetViewTests.swift */; };
 		B5EB4ECE22033530004EA1B5 /* CerebellumWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B5EB4EC022033530004EA1B5 /* CerebellumWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B5EB4EDF220344C0004EA1B5 /* WidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4EDE220344C0004EA1B5 /* WidgetViewController.swift */; };
+		B5EB4EDF220344C0004EA1B5 /* CerebellumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4EDE220344C0004EA1B5 /* CerebellumWidget.swift */; };
 		B5EB4F0A22044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F0922044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift */; };
 		B5EB4F0C22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F0B22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift */; };
 		B5EB4F0E22044D55004EA1B5 /* JSProtocolWithResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F0D22044D55004EA1B5 /* JSProtocolWithResponse.swift */; };
@@ -63,7 +63,7 @@
 		B5EB4EC622033530004EA1B5 /* CerebellumWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CerebellumWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EB4ECB22033530004EA1B5 /* WidgetViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewTests.swift; sourceTree = "<group>"; };
 		B5EB4ECD22033530004EA1B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5EB4EDE220344C0004EA1B5 /* WidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewController.swift; sourceTree = "<group>"; };
+		B5EB4EDE220344C0004EA1B5 /* CerebellumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CerebellumWidget.swift; sourceTree = "<group>"; };
 		B5EB4F0922044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNativeStorageItemWrapper.swift; sourceTree = "<group>"; };
 		B5EB4F0B22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNativeStorageItemWrapper.swift; sourceTree = "<group>"; };
 		B5EB4F0D22044D55004EA1B5 /* JSProtocolWithResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSProtocolWithResponse.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				B5EB4F0822044C91004EA1B5 /* JSWrappers */,
 				B5EB4EC022033530004EA1B5 /* CerebellumWidget.h */,
 				B5EB4EC122033530004EA1B5 /* Info.plist */,
-				B5EB4EDE220344C0004EA1B5 /* WidgetViewController.swift */,
+				B5EB4EDE220344C0004EA1B5 /* CerebellumWidget.swift */,
 				B5EB4F2B2204F251004EA1B5 /* Environment.swift */,
 				B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */,
 			);
@@ -434,7 +434,7 @@
 				B5EB4F3E22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift in Sources */,
 				B5EB4F5D220AE76C004EA1B5 /* ExpandWrapper.swift in Sources */,
 				B5EB4F0A22044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift in Sources */,
-				B5EB4EDF220344C0004EA1B5 /* WidgetViewController.swift in Sources */,
+				B5EB4EDF220344C0004EA1B5 /* CerebellumWidget.swift in Sources */,
 				B5EB4F35220875B8004EA1B5 /* OnSignUpHandlerMapper.swift in Sources */,
 				B5EB4F5F220AE778004EA1B5 /* ShowWrapper.swift in Sources */,
 				B5EB4F33220870E3004EA1B5 /* OnHideHandlerMapper.swift in Sources */,

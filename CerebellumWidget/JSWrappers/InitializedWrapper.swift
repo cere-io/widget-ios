@@ -9,7 +9,7 @@
 import Foundation
 
 class InitializedWrapper : JsProtocolWithResponse {
-    override func handleEvent(widget: WidgetViewController, data: AnyObject, responseCallback: ResponseCallback) {
+    override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
         widget.setInitialized();
 
         responseCallback?(nil);

@@ -9,7 +9,7 @@
 import Foundation
 
 class GetNativeStorageItemWrapper : JsProtocolWithResponse {
-    override func handleEvent(widget: WidgetViewController, data: AnyObject, responseCallback: ResponseCallback) {
+    override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
         if let bodyObj = data as? [AnyObject] {
             guard let key = bodyObj[0] as? String,
                   let value = KeychainService().getValue(byKey: key) else {
