@@ -201,7 +201,7 @@ public class CerebellumWidget {
                                                      env: self.env.name,
                                                      mode: String(describing: self.mode).lowercased(),
                                                      sections: self.sections.joined(separator: ", "));
-            self.webView!.loadHTMLString(content, baseURL: URL(string: env.sdkURL)!);
+            self.webView!.loadHTMLString(content, baseURL: URL(string: env.widgetURL)!);
 
             self.parentController!.view.addSubview(self.webView!);
         } catch {
