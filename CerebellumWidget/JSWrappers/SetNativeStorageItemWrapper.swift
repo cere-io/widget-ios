@@ -13,6 +13,8 @@ class SetNativeStorageItemWrapper : JsProtocolWithResponse {
         if let bodyObj = data as? [AnyObject] {
             guard let key = bodyObj[0] as? String,
                   let value = bodyObj[1] as? String else {
+                
+                    responseCallback?(false);
                     return;
             }
 
@@ -20,5 +22,7 @@ class SetNativeStorageItemWrapper : JsProtocolWithResponse {
             
             print("SetNativeStorageItemWrapper: key=\(key) value=\(value)");
         }
+        
+        responseCallback?(true);
     }
 }

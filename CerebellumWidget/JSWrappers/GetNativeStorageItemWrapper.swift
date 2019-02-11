@@ -13,7 +13,8 @@ class GetNativeStorageItemWrapper : JsProtocolWithResponse {
         if let bodyObj = data as? [AnyObject] {
             guard let key = bodyObj[0] as? String,
                   let value = KeychainService().getValue(byKey: key) else {
-                    responseCallback?(false);
+                    responseCallback?("~<Native Storage Error>~");
+                    
                     return;
             }
             

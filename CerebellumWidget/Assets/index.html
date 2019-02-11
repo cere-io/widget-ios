@@ -35,7 +35,7 @@
               return new Promise(function(resolve, reject) {
                 bridge.callHandler('getNativeStorageItem', [key], function(response) {
                   console.log('result', response);
-                  if (response === 'false') {
+                  if (response === '~<Native Storage Error>~') {
                     reject();
                   } else {
                     resolve(response);
@@ -132,6 +132,8 @@
             window.CRBWidget.onInitialized(function() {
               console.log('===>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Widget Initialized');
               jsBridge.callHandler('initialized', {}, function(response) {});
+              
+              window.CRBWidget.expand();
             });
 
             window.CRBWidget.onGetUserByEmail(function(email) {
@@ -149,7 +151,7 @@
                 .then(callback);
             });
             
-            window.CRBWidget.expand();
+            
           }
         }, 1000);
       };
