@@ -74,7 +74,8 @@
         appId: '::appId::',
         env: '::env::',
         mode: '::mode::',
-        sections: '::sections::'.split(',')
+        sections: '::sections::'.split(','),
+        uiState: 'expanded',
       };
 
       console.log('Widget data', window.widget);
@@ -132,8 +133,6 @@
             window.CRBWidget.onInitialized(function() {
               console.log('===>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Widget Initialized');
               jsBridge.callHandler('initialized', {}, function(response) {});
-              
-              window.CRBWidget.expand();
             });
 
             window.CRBWidget.onGetUserByEmail(function(email) {
