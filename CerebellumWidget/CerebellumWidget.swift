@@ -151,7 +151,6 @@ public class CerebellumWidget {
         return self;
     }
     
-    
     public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onGetUserByEmail",
@@ -180,30 +179,42 @@ public class CerebellumWidget {
     }
     
     func load() {
+        initDefaultSize();
+        createViewAndAddAsSubview();
+        attachBridge();
+        loadContent();
+    }
+    
+    func createViewAndAddAsSubview() {
         let configuration = WKWebViewConfiguration();
-        let s = UIScreen.main.bounds;
-        
-        defaultFrame = CGRect(x: s.minX + s.width * frameGapFactor,
-                              y: s.minY + s.height * frameGapFactor,
-                              width: s.width - 2 * s.width * frameGapFactor,
-                              height: s.height - 2 * s.height * frameGapFactor);
         
         self.webView = WKWebView(frame: .zero, configuration: configuration);
+        self.parentController!.view.addSubview(self.webView!);
+    }
+    
+    func initDefaultSize() {
+        let s = UIScreen.main.bounds;
         
-        attachBridge();
-        
+        self.defaultFrame = CGRect(
+            x: s.minX + s.width * frameGapFactor,
+            y: s.minY + s.height * frameGapFactor,
+            width: s.width - 2 * s.width * frameGapFactor,
+            height: s.height - 2 * s.height * frameGapFactor);
+    }
+    
+    func loadContent() {
         do {
             let template = try loadHtmlTemplate();
-            let content = insertParametersToTemplate(template,
-                                                     widgetUrl: env.sdkURL + Environment.bundleJSPath,
-                                                     userId: self.userId,
-                                                     appId: self.appId,
-                                                     env: self.env.name,
-                                                     mode: String(describing: self.mode).lowercased(),
-                                                     sections: self.sections.joined(separator: ", "));
+            let content = insertParametersToTemplate(
+                template,
+                widgetUrl: env.sdkURL + Environment.bundleJSPath,
+                userId: self.userId,
+                appId: self.appId,
+                env: self.env.name,
+                mode: String(describing: self.mode).lowercased(),
+                sections: self.sections.joined(separator: ","));
+            
             self.webView!.loadHTMLString(content, baseURL: URL(string: env.widgetURL)!);
-
-            self.parentController!.view.addSubview(self.webView!);
         } catch {
             print("Can not initialize widget");
         }

@@ -22,7 +22,7 @@ public typealias OnSignInHandler = (_ email: String,
 public typealias OnProcessNonFungibleRewardHandler = (_ data: String) -> Void;
 
 public typealias OnGetClaimedRewardsHandler = (_ callback: @escaping GetClaimedRewardsCallback) -> Void;
-public typealias GetClaimedRewardsCallback = (_ data: String?) -> Void;
+public typealias GetClaimedRewardsCallback = (_ data: [ClaimedRewardItem]) -> Void;
 
 public typealias OnGetUserByEmailHandler = (_ email: String,
                                             _ callback: @escaping GetUserByEmailCallback) -> Void;

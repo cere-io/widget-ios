@@ -27,7 +27,13 @@
           setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
       }
     
-      setupWebViewJavascriptBridge(function(bridge) {
+    var script = document.createElement('script');
+    script.src = '::widgetUrl::';
+    
+    setupWebViewJavascriptBridge(function(bridge) {
+        window.WebViewJavascriptBridge.isAndroid = false;
+        window.WebViewJavascriptBridge.isIOS = true;
+
         if (!window.NativeStorage) {
           window.NativeStorage = {
             getItem: function(key) {
@@ -60,58 +66,35 @@
             }
           };
         }
-                                   
-        // For test only:
-        //bridge.callHandler('initialized', {}, function(response) {});
-        //bridge.callHandler('getNativeStorageItem', ['test'], function(response) {});
+                  
+        window.widget = {
+            userId: '::userId::',
+            appId: '::appId::',
+            env: '::env::',
+            mode: '::mode::',
+            sections: '::sections::'.split(','),
+        };
 
-        //NativeStorage.setItem('testKey', {key: "value"});
-        //console.log(NativeStorage.getItem('testKey'));
-      });
-    
-      window.widget = {
-        userId: '::userId::',
-        appId: '::appId::',
-        env: '::env::',
-        mode: '::mode::',
-        sections: '::sections::'.split(','),
-      };
+        console.log('Widget data', window.widget);
+  
+        script.onload = function() {
+            function processPromise(data) {
+              var res = null;
 
-      console.log('Widget data', window.widget);
+              if (data) {
+                try {
+                  res = JSON.parse(data);
+                } catch (e) {
+                  res = data;
+                }
+              }
 
-      var script = document.createElement('script');
-      script.src = '::widgetUrl::';
-      script.defer = true;
-      script.onload = function() {
-
-        function processPromise(data) {
-          var res = null;
-
-          if (data) {
-            try {
-              res = JSON.parse(data);
-            } catch (e) {
-              res = data;
+              console.log('WidgetAndroidSDK::result', res);
+              return res;
             }
-          }
 
-          console.log('WidgetAndroidSDK::result', res);
-          return res;
-        }
-
-        var t = setInterval(function() {
-
-          console.log('Check JS Bridge', window.WebViewJavascriptBridge);
-          var nativeStorage = window.NativeStorage;
-          console.log('Check NativeStorage', nativeStorage);
-
-          if (window.WebViewJavascriptBridge && nativeStorage) {
-            clearInterval(t);
-            t = null;
-
+            var nativeStorage = window.NativeStorage;
             var jsBridge = window.WebViewJavascriptBridge;
-
-            console.log(jsBridge);
 
             window.CRBWidget.init({
               uid: window.widget.userId,
@@ -155,12 +138,9 @@
               window.CRBWidget.logout()
                 .then(callback);
             });
-            
-            
-          }
-        }, 1000);
-      };
-
+        }
+      });
+                                   
       var firstScript = document.getElementsByTagName('script')[0];
       firstScript.parentNode.insertBefore(script, firstScript);
     </script>

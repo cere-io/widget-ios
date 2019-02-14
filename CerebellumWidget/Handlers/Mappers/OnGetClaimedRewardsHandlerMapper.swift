@@ -8,6 +8,7 @@
 
 import Foundation
 import WebViewJavascriptBridge
+import SwiftyJSON
 
 class OnGetClaimedRewardsHandlerMapper {
     let handler: OnGetClaimedRewardsHandler
@@ -21,13 +22,22 @@ class OnGetClaimedRewardsHandlerMapper {
             let handlerCallback: GetClaimedRewardsCallback = {(resultList) in
                 // resultList is json string for now.
                 
-                if let callback = responseCallback {
-                    if (resultList == nil) {
-                        callback("[]");
-                    } else {
-                        callback(resultList);
-                    }
+                var list: [[String: AnyObject]] = [];
+                
+                for item in resultList {
+                    list.append([
+                        "title": item.title as AnyObject,
+                        "img": item.imageUrl as AnyObject,
+                        "price": "\(item.price) \(item.currency)" as AnyObject,
+                        "additionalInfo": [
+                            "Code: \(item.additionalInfo.code.description)",
+                            "Order ID: \(item.additionalInfo.orderId.description)",
+                            "Created: \(item.additionalInfo.createdAt.description)",
+                        ] as AnyObject,
+                    ]);
                 }
+                
+                responseCallback?(JSON(list).description);
             };
             
             self.handler(handlerCallback);
