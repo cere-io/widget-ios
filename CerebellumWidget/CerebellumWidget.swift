@@ -46,6 +46,7 @@ public class CerebellumWidget {
     public func show() {
         self.queueHandler({() in
             self.setView(visible: true);
+            self.executeJS(method: "__showOnNative");
         });
     }
     
