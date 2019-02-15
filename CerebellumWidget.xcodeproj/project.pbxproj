@@ -13,7 +13,6 @@
 		B5C93EEA220F88C0001A9BD5 /* ShareWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93EE9220F88C0001A9BD5 /* ShareWrapper.swift */; };
 		B5C93EEC2211A778001A9BD5 /* ShareWithWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93EEB2211A778001A9BD5 /* ShareWithWrapper.swift */; };
 		B5C93EEF221416CA001A9BD5 /* ClaimedRewardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93EEE221416CA001A9BD5 /* ClaimedRewardItem.swift */; };
-		B5C93EF1221417FC001A9BD5 /* AdditionalRewardItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93EF0221417FC001A9BD5 /* AdditionalRewardItemInfo.swift */; };
 		B5EB4EC722033530004EA1B5 /* CerebellumWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5EB4EBD22033530004EA1B5 /* CerebellumWidget.framework */; };
 		B5EB4ECC22033530004EA1B5 /* WidgetViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4ECB22033530004EA1B5 /* WidgetViewTests.swift */; };
 		B5EB4ECE22033530004EA1B5 /* CerebellumWidget.h in Headers */ = {isa = PBXBuildFile; fileRef = B5EB4EC022033530004EA1B5 /* CerebellumWidget.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -62,7 +61,6 @@
 		B5C93EE9220F88C0001A9BD5 /* ShareWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareWrapper.swift; sourceTree = "<group>"; };
 		B5C93EEB2211A778001A9BD5 /* ShareWithWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareWithWrapper.swift; sourceTree = "<group>"; };
 		B5C93EEE221416CA001A9BD5 /* ClaimedRewardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimedRewardItem.swift; sourceTree = "<group>"; };
-		B5C93EF0221417FC001A9BD5 /* AdditionalRewardItemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalRewardItemInfo.swift; sourceTree = "<group>"; };
 		B5EB4EBD22033530004EA1B5 /* CerebellumWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CerebellumWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EB4EC022033530004EA1B5 /* CerebellumWidget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CerebellumWidget.h; sourceTree = "<group>"; };
 		B5EB4EC122033530004EA1B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 				B5EB4F3622087E6A004EA1B5 /* Helpers.swift */,
 				B5EB4F2F2208671C004EA1B5 /* CustomHandlers.swift */,
 				B5C93EEE221416CA001A9BD5 /* ClaimedRewardItem.swift */,
-				B5C93EF0221417FC001A9BD5 /* AdditionalRewardItemInfo.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -440,7 +437,6 @@
 				B5EB4F0C22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift in Sources */,
 				B5EB4F2722047C3E004EA1B5 /* InitializedWrapper.swift in Sources */,
 				B5EB4F3722087E6A004EA1B5 /* Helpers.swift in Sources */,
-				B5C93EF1221417FC001A9BD5 /* AdditionalRewardItemInfo.swift in Sources */,
 				B5EB4F302208671C004EA1B5 /* CustomHandlers.swift in Sources */,
 				B5EB4F3E22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift in Sources */,
 				B5EB4F5D220AE76C004EA1B5 /* ExpandWrapper.swift in Sources */,

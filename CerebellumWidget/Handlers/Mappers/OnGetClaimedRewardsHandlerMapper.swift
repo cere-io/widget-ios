@@ -29,11 +29,7 @@ class OnGetClaimedRewardsHandlerMapper {
                         "title": item.title as AnyObject,
                         "img": item.imageUrl as AnyObject,
                         "price": "\(item.price) \(item.currency)" as AnyObject,
-                        "additionalInfo": [
-                            "Code: \(item.additionalInfo.code.description)",
-                            "Order ID: \(item.additionalInfo.orderId.description)",
-                            "Created: \(item.additionalInfo.createdAt.description)",
-                        ] as AnyObject,
+                        "additionalInfo": item.additionalInfo as AnyObject,
                     ]);
                 }
                 

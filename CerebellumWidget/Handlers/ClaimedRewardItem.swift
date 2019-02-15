@@ -13,9 +13,9 @@ public class ClaimedRewardItem {
     public var imageUrl: String;
     public var price: Decimal;
     public var currency: String;
-    public var additionalInfo: AdditionalRewardItemInfo;
+    public var additionalInfo: [String];
     
-    public init(title: String, imageUrl: String, price: Decimal, currency: String, additionalInfo: AdditionalRewardItemInfo) {
+    public init(title: String, imageUrl: String, price: Decimal, currency: String, additionalInfo: [String]) {
         self.title = title;
         self.imageUrl = imageUrl;
         self.price = price;
