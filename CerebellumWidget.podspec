@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CerebellumWidget"
-  s.version      = "1.0.4"
+  s.version      = "1.0.0"
   s.summary      = "Cerebellum widget SDK for iOS."
   s.description  = "The library includes all the stuff required to embed Cerebellum widget to your iOS application."
   s.homepage     = "http://cere.io"
