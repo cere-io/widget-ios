@@ -20,4 +20,6 @@ let JSCallbackList: [String: JsProtocolWithResponse] = [
     "logout": LogoutWrapper(),
     "share": ShareWrapper(),
     "shareWith": ShareWithWrapper(),
+    "getReferralsInfo": GetReferralsInfoWrapper(),
+    "showNativeMessage": ShowNativeMessageWrapper(),
 ];

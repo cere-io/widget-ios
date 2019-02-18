@@ -10,6 +10,8 @@
 		029510CC8C6AA47EF9A0FB96 /* Pods_CerebellumWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88FF6B6385ED0865F866A4A /* Pods_CerebellumWidget.framework */; };
 		60E6551E583F31B6680F43D3 /* Pods_CerebellumWidgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FD254945794D20A6A9BAA5A /* Pods_CerebellumWidgetTests.framework */; };
 		B51DCE88220B266B00FFD925 /* RestoreWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51DCE87220B266B00FFD925 /* RestoreWrapper.swift */; };
+		B5259954221ABF1C001D90EE /* GetReferralsInfoWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5259953221ABF1C001D90EE /* GetReferralsInfoWrapper.swift */; };
+		B5259956221AC311001D90EE /* ShowNativeMessageWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5259955221AC311001D90EE /* ShowNativeMessageWrapper.swift */; };
 		B5C93EEA220F88C0001A9BD5 /* ShareWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93EE9220F88C0001A9BD5 /* ShareWrapper.swift */; };
 		B5C93EEC2211A778001A9BD5 /* ShareWithWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93EEB2211A778001A9BD5 /* ShareWithWrapper.swift */; };
 		B5C93EEF221416CA001A9BD5 /* ClaimedRewardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C93EEE221416CA001A9BD5 /* ClaimedRewardItem.swift */; };
@@ -58,6 +60,8 @@
 		A16BBAE1D1DAD7A4C09B231D /* Pods-CerebellumWidgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CerebellumWidgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CerebellumWidgetTests/Pods-CerebellumWidgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A281D8FACFD73128B89245F2 /* Pods-CerebellumWidgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CerebellumWidgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CerebellumWidgetTests/Pods-CerebellumWidgetTests.release.xcconfig"; sourceTree = "<group>"; };
 		B51DCE87220B266B00FFD925 /* RestoreWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreWrapper.swift; sourceTree = "<group>"; };
+		B5259953221ABF1C001D90EE /* GetReferralsInfoWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReferralsInfoWrapper.swift; sourceTree = "<group>"; };
+		B5259955221AC311001D90EE /* ShowNativeMessageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNativeMessageWrapper.swift; sourceTree = "<group>"; };
 		B5C93EE9220F88C0001A9BD5 /* ShareWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareWrapper.swift; sourceTree = "<group>"; };
 		B5C93EEB2211A778001A9BD5 /* ShareWithWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareWithWrapper.swift; sourceTree = "<group>"; };
 		B5C93EEE221416CA001A9BD5 /* ClaimedRewardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimedRewardItem.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				B5EB4F64220AE7BC004EA1B5 /* LogoutWrapper.swift */,
 				B5C93EE9220F88C0001A9BD5 /* ShareWrapper.swift */,
 				B5C93EEB2211A778001A9BD5 /* ShareWithWrapper.swift */,
+				B5259953221ABF1C001D90EE /* GetReferralsInfoWrapper.swift */,
+				B5259955221AC311001D90EE /* ShowNativeMessageWrapper.swift */,
 			);
 			path = JSWrappers;
 			sourceTree = "<group>";
@@ -450,7 +456,9 @@
 				B5EB4F4022089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift in Sources */,
 				B5EB4F1322045232004EA1B5 /* KeychainService.swift in Sources */,
 				B5EB4F65220AE7BC004EA1B5 /* LogoutWrapper.swift in Sources */,
+				B5259954221ABF1C001D90EE /* GetReferralsInfoWrapper.swift in Sources */,
 				B5EB4F25220470C2004EA1B5 /* JSCallbackList.swift in Sources */,
+				B5259956221AC311001D90EE /* ShowNativeMessageWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
