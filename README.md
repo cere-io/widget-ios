@@ -24,17 +24,17 @@ That's it. Or you can use classic way:
 6. Now Click `+` again and `CerebellumWidget` should appear, select `CerebellumWidget.framework` and `Add`
 7. In case you are using Swift you need to include `CerebellumWidget.h` so you can reference it later
 
-    ```
+```swift
     #import "../../../widget-ios/CerebellumWidget/CerebellumWidget/CerebellumWidget.h"
-    ``` 
+``` 
 
-    This can be done in any Header bridge you may have.
+This can be done in any Header bridge you may have.
 
 ## Usage
 
 You need to add the widget to any View you would like.
     
-    ```
+```swift
     import CerebellumWidget
 
     ...
@@ -48,21 +48,43 @@ You need to add the widget to any View you would like.
         userId: "username",
         appId: "777",
         sections: ["top_section_1", "top_section_2", "top_section_3"]);
-    ```
+```
 
-After these lines widget is basically loaded and ready to work. To show it just call:
+Parameters `userId`, `appId` and `sections` should be taken from RMS.
+At this point widget is basically loaded and ready to work. To show it just call:
 
-    crbWidget.setMode(WidgetMode.REWARDS);
-    crbWidget.show();
+```swift
+    self.crbWidget.show();
+```
 
-You might need to implement additional handlers in order to enable all features of the widget.
+## API Reference
+### Methods
 
-    public func onHide(_ handler: @escaping OnHideHandler) -> CerebellumWidget;
-    public func onSignUp(_ handler: @escaping OnSignUpHandler) -> CerebellumWidget;
-    public func onSignIn(_ handler: @escaping OnSignInHandler) -> CerebellumWidget
-    public func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> CerebellumWidget;
-    public func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> CerebellumWidget;
-    public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> CerebellumWidget;
+| Signature | Description |
+| :-- | :-- |
+| initAndLoad | Initializes widget for the app (with parameters are taken from RMS) and loads widget content |
+| show | Shows the widget if it was hidden or closed |
+| expand | Shows widget expanded on whole screen |
+| restore | Restores widget to normal view size after expanding |
+| hide | Hides the widget manually |
+| collapse | Similar to hide, but is triggered when user clicks minimize button in widget (hidden by default) |
+| resize | Resized widget to custom size |
+| setMode | Sets widget mode. Currently two modes are supported: REWARDS (default one) and LOGIN |
+| setUserData | Sets data required for some fields of the widget like `name` or `level`. Should be passes as JSON string '{userData: {name: "Junior", level: 1}'
+| logout | Logs out user from widget |
+
+### Events
+
+| Signature | Description |
+| :-- | :-- |
+| onHide | Triggered when user clicks close button on widget and it is about to close |
+| onSignUp | Triggered when user completes sign up in widget |
+| onSignIn | Triggered when user signs in to widget |
+| onProcessNonFungibleReward | Triggered when user wants to buy non fungible reward like gift card. Additional actions should be performed in the hosting app |
+| onGetClaimedRewards | List of redeemed rewards should be passed to widget with this event. Triggered when user opens inventory tab |
+| onGetUserByEmail | Triggered on sign up to know if user exists in app, but new in the widget |
+
+On more detailed information of using the widget in your app please see CerebellumWidgetExample app.
 
 ## Upcoming installation Methods
 
