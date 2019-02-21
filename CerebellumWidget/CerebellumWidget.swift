@@ -104,6 +104,7 @@ public class CerebellumWidget {
     public func logout() {
         self.queueHandler({() in
             self.bridge?.callHandler("logout");
+            self.loadContent();
         });
     }
     
