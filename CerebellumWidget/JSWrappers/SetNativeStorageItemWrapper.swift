@@ -18,7 +18,7 @@ class SetNativeStorageItemWrapper : JsProtocolWithResponse {
                     return;
             }
 
-            KeychainService().set(value, for: key);
+            StorageService(widget.env.name).set(value, for: key);
             
             print("SetNativeStorageItemWrapper: key=\(key) value=\(value)");
         }

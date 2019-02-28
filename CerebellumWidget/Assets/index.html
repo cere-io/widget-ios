@@ -119,9 +119,9 @@
               }
             });
 
-            window.CRBWidget.onInitialized(function() {
+            window.CRBWidget.onInitialized(function(hasItems) {
               console.log('===>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Widget Initialized');
-              jsBridge.callHandler('initialized', {}, function(response) {});
+              jsBridge.callHandler('initialized', hasItems, function(response) {});
             });
 
             window.CRBWidget.onGetUserByEmail(function(email) {

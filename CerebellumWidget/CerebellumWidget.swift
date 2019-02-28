@@ -17,7 +17,7 @@ public class CerebellumWidget {
     var parentController: UIViewController?;
     var onInitializationFinishedHandler: OnInitializationFinishedHandler?;
 
-    private var env: Environment = Environment.PRODUCTION;
+    internal var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
     private var appId: String = "";
     private var userId: String = "";
@@ -105,7 +105,7 @@ public class CerebellumWidget {
     public func logout() {
         self.queueHandler({() in
             self.bridge?.callHandler("logout");
-            self.loadContent();
+            //self.loadContent();
         });
     }
     

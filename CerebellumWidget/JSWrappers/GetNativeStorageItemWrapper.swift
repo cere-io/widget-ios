@@ -9,16 +9,18 @@
 import Foundation
 
 class GetNativeStorageItemWrapper : JsProtocolWithResponse {
+    private let storageErrorString = "~<Native Storage Error>~";
+
     override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
         if let bodyObj = data as? [AnyObject] {
-            guard let key = bodyObj[0] as? String,
-                  let value = KeychainService().getValue(byKey: key) else {
-                    responseCallback?("~<Native Storage Error>~");
-                    
-                    return;
+            guard let key = bodyObj[0] as? String else {
+                responseCallback?(storageErrorString);
+                
+                return;
             }
+            let value = StorageService(widget.env.name).getValue(byKey: key);
             
-            responseCallback?(value)
+            responseCallback?(value);
         }
     }
 }

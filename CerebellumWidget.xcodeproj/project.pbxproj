@@ -22,7 +22,7 @@
 		B5EB4F0A22044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F0922044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift */; };
 		B5EB4F0C22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F0B22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift */; };
 		B5EB4F0E22044D55004EA1B5 /* JSProtocolWithResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F0D22044D55004EA1B5 /* JSProtocolWithResponse.swift */; };
-		B5EB4F1322045232004EA1B5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F1222045232004EA1B5 /* KeychainService.swift */; };
+		B5EB4F1322045232004EA1B5 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F1222045232004EA1B5 /* StorageService.swift */; };
 		B5EB4F25220470C2004EA1B5 /* JSCallbackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F24220470C2004EA1B5 /* JSCallbackList.swift */; };
 		B5EB4F2722047C3E004EA1B5 /* InitializedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2622047C3E004EA1B5 /* InitializedWrapper.swift */; };
 		B5EB4F2A22048ECD004EA1B5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = B5EB4F2922048ECC004EA1B5 /* index.html */; };
@@ -75,7 +75,7 @@
 		B5EB4F0922044CBE004EA1B5 /* SetNativeStorageItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNativeStorageItemWrapper.swift; sourceTree = "<group>"; };
 		B5EB4F0B22044CD1004EA1B5 /* GetNativeStorageItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNativeStorageItemWrapper.swift; sourceTree = "<group>"; };
 		B5EB4F0D22044D55004EA1B5 /* JSProtocolWithResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSProtocolWithResponse.swift; sourceTree = "<group>"; };
-		B5EB4F1222045232004EA1B5 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		B5EB4F1222045232004EA1B5 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		B5EB4F24220470C2004EA1B5 /* JSCallbackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSCallbackList.swift; sourceTree = "<group>"; };
 		B5EB4F2622047C3E004EA1B5 /* InitializedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializedWrapper.swift; sourceTree = "<group>"; };
 		B5EB4F2922048ECC004EA1B5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		B5EB4F1122045225004EA1B5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				B5EB4F1222045232004EA1B5 /* KeychainService.swift */,
+				B5EB4F1222045232004EA1B5 /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -454,7 +454,7 @@
 				B5EB4F33220870E3004EA1B5 /* OnHideHandlerMapper.swift in Sources */,
 				B5EB4F3B2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift in Sources */,
 				B5EB4F4022089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift in Sources */,
-				B5EB4F1322045232004EA1B5 /* KeychainService.swift in Sources */,
+				B5EB4F1322045232004EA1B5 /* StorageService.swift in Sources */,
 				B5EB4F65220AE7BC004EA1B5 /* LogoutWrapper.swift in Sources */,
 				B5259954221ABF1C001D90EE /* GetReferralsInfoWrapper.swift in Sources */,
 				B5EB4F25220470C2004EA1B5 /* JSCallbackList.swift in Sources */,
