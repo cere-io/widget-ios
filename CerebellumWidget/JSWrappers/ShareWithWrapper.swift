@@ -14,6 +14,7 @@ class ShareWithWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
         let json = JSON(data);
         let appId = json["app"]["id"].string;
+        let data = json["data"].stringValue;
         
         if (!appIsInstalled(appId, widget)) {
             return;
@@ -23,12 +24,13 @@ class ShareWithWrapper : JsProtocolWithResponse {
         if (["facebook", "twitter"].contains(appId)) {
             let controller = SLComposeViewController(forServiceType: json["app"]["iosId"].string);
         
-            controller?.setInitialText(json["data"].string);
+            controller?.setInitialText(data);
         
             widget.parentController!.present(controller!, animated: true, completion: nil);
         } else {
             var url: URL? = nil;
-            guard let params = json["data"].stringValue.addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
+            
+            guard let params = data.addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
                 print("shareWithWrapper: incorrect data provided.");
 
                 return;
@@ -38,6 +40,8 @@ class ShareWithWrapper : JsProtocolWithResponse {
                 url = URL(string: "tg://msg?text=\(params)");
             } else if (appId == "instagram") {
                 url = URL(string: "instagram://msg?text=\(params)");
+                
+                UIPasteboard.general.string = data;
             }
             
             if (url != nil) {
