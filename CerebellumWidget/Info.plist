@@ -4,6 +4,13 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>tg</string>
+		<string>twitter</string>
+		<string>fb</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>CerebellumWidget</string>
 	<key>CFBundleExecutable</key>
