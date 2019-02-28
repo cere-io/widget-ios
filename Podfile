@@ -5,7 +5,6 @@ target 'CerebellumWidget' do
   use_frameworks!
   # Pods for CerebellumWidget
   pod 'WebViewJavascriptBridge', '~>6.0'
-  pod 'KeychainAccess'
   pod 'SwiftyJSON'
 
 target 'CerebellumWidgetTests' do
