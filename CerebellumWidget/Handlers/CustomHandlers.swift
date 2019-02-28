@@ -27,3 +27,5 @@ public typealias GetClaimedRewardsCallback = (_ data: [ClaimedRewardItem]) -> Vo
 public typealias OnGetUserByEmailHandler = (_ email: String,
                                             _ callback: @escaping GetUserByEmailCallback) -> Void;
 public typealias GetUserByEmailCallback = (_ exists: Bool) -> Void;
+
+public typealias OnInitializationFinishedHandler = (_ hasItems: Bool) -> Void;

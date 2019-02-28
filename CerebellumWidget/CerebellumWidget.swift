@@ -15,6 +15,7 @@ public class CerebellumWidget {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
+    var onInitializationFinishedHandler: OnInitializationFinishedHandler?;
 
     private var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
@@ -106,6 +107,12 @@ public class CerebellumWidget {
             self.bridge?.callHandler("logout");
             self.loadContent();
         });
+    }
+    
+    public func onInitializationFinished(_ handler: @escaping OnInitializationFinishedHandler) -> CerebellumWidget {
+        self.onInitializationFinishedHandler = handler;
+        
+        return self;
     }
     
     public func onHide(_ handler: @escaping OnHideHandler) -> CerebellumWidget {

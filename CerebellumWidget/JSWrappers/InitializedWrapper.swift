@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class InitializedWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
+        let json = JSON(data);
+        
         widget.setInitialized();
-
+        widget.onInitializationFinishedHandler?(Bool(json.stringValue) ?? false);
+        
         responseCallback?(nil);
     }
 }
