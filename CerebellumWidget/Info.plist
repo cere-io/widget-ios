@@ -4,13 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>instagram</string>
-		<string>tg</string>
-		<string>twitter</string>
-		<string>fb</string>
-	</array>
 	<key>CFBundleDisplayName</key>
 	<string>CerebellumWidget</string>
 	<key>CFBundleExecutable</key>
@@ -27,5 +20,12 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>tg</string>
+		<string>twitter</string>
+		<string>fb</string>
+	</array>
 </dict>
 </plist>
