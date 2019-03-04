@@ -29,6 +29,7 @@ class OnGetClaimedRewardsHandlerMapper {
                         "title": item.title as AnyObject,
                         "img": item.imageUrl as AnyObject,
                         "price": "\(item.price) \(item.currency)" as AnyObject,
+                        "redemptionInstructions": "\(item.redemptionInstructions)" as AnyObject,
                         "additionalInfo": item.additionalInfo as AnyObject,
                     ]);
                 }

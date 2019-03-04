@@ -13,13 +13,15 @@ public class ClaimedRewardItem {
     public var imageUrl: String;
     public var price: Decimal;
     public var currency: String;
+    public var redemptionInstructions: String;
     public var additionalInfo: [String];
     
-    public init(title: String, imageUrl: String, price: Decimal, currency: String, additionalInfo: [String]) {
+    public init(title: String, imageUrl: String, price: Decimal, currency: String, redemptionInstructions:String, additionalInfo: [String]) {
         self.title = title;
         self.imageUrl = imageUrl;
         self.price = price;
         self.currency = currency;
+        self.redemptionInstructions = redemptionInstructions;
         self.additionalInfo = additionalInfo;
     }
 }
