@@ -16,6 +16,9 @@ public class CerebellumWidget {
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
     var onInitializationFinishedHandler: OnInitializationFinishedHandler?;
+    var onGetUserByEmailHandler: OnGetUserByEmailHandler?;
+    var onSignInHandler: OnSignInHandler?;
+    var onSignUpHandler: OnSignUpHandler?;
 
     internal var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
@@ -42,8 +45,9 @@ public class CerebellumWidget {
         self.env = env;
         
         load();
+        setupDefaultHandlers();
     }
-    
+
     public func show() {
         self.queueHandler({() in
             self.setView(visible: true);
@@ -125,19 +129,13 @@ public class CerebellumWidget {
     }
     
     public func onSignUp(_ handler: @escaping OnSignUpHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onSignUp",
-                                         handler: OnSignUpHandlerMapper(handler).map());
-        });
+        self.onSignUpHandler = handler;
         
         return self;
     }
     
     public func onSignIn(_ handler: @escaping OnSignInHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onSignIn",
-                                     handler: OnSignInHandlerMapper(handler).map());
-        });
+        self.onSignInHandler = handler;
         
         return self;
     }
@@ -161,10 +159,7 @@ public class CerebellumWidget {
     }
     
     public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onGetUserByEmail",
-                                         handler: OnGetUserByEmailHandlerMapper(handler).map());
-        });
+        self.onGetUserByEmailHandler = handler;
         
         return self;
     }
@@ -276,5 +271,46 @@ public class CerebellumWidget {
         for handler in self.handlerQueue {
             handler();
         }
+    }
+
+    private func setupDefaultHandlers() {
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onGetUserByEmail",
+                                         handler: OnGetUserByEmailHandlerMapper({(
+                                            email: String,
+                                            callback: @escaping GetUserByEmailCallback) in
+                                            if (self.onGetUserByEmailHandler != nil) {
+                                                self.onGetUserByEmailHandler!(email, callback);
+                                            } else {
+                                                callback(false);
+                                            }
+                                         }).map());
+            
+            self.bridge?.registerHandler("onSignIn",
+                                         handler: OnSignInHandlerMapper({(
+                                            email: String,
+                                            token: String,
+                                            extras: [String: String]) in
+                                            if (self.onSignInHandler != nil) {
+                                                self.onSignInHandler!(email, token, extras);
+                                            } else {
+                                                self.setMode(mode: WidgetMode.REWARDS);
+                                            }
+                                         }).map());
+
+            
+            self.bridge?.registerHandler("onSignUp",
+                                         handler: OnSignUpHandlerMapper({(
+                                            email: String,
+                                            token: String,
+                                            password: String,
+                                            extras: [String: String]) in
+                                            if (self.onSignUpHandler != nil) {
+                                                self.onSignUpHandler!(email, token, password, extras);
+                                            } else {
+                                                self.setMode(mode: WidgetMode.REWARDS);
+                                            }
+                                         }).map());
+        });
     }
 }
