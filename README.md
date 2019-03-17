@@ -45,12 +45,12 @@ You need to add the widget to any View you would like.
 
     self.crbWidget.initAndLoad(
         parentController: self,
-        userId: "username",
-        appId: "777",
+        applicationId: "777",
+        userId: "authorized@user.com",
         sections: ["top_section_1", "top_section_2", "top_section_3"]);
 ```
 
-Parameters `userId`, `appId` and `sections` should be taken from RMS.
+Parameter `applicationId` should be taken from RMS and is mandatory. Parameter `userId` can be specified if you know the user who is using the widget, otherwise it can be omit (or `nil`). Parameter `sections` depends on your RMS configuration. If you use `default` placement for rewards you can omit this parameter.
 At this point widget is basically loaded and ready to work. To show it just call:
 
 ```swift

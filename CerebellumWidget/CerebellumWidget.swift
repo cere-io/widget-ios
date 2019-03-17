@@ -23,7 +23,7 @@ public class CerebellumWidget {
     internal var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
     private var appId: String = "";
-    private var userId: String = "";
+    private var userId: String?;
     private var sections: [String] = [];
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
@@ -33,14 +33,14 @@ public class CerebellumWidget {
 
     public init() {}
     
-    public func initAndLoad(parentController: UIViewController, userId: String, appId: String, sections: [String], env: Environment = Environment.PRODUCTION) {
+    public func initAndLoad(parentController: UIViewController, applicationId: String, userId: String? = nil, sections: [String] = ["default"], env: Environment = Environment.PRODUCTION) {
         if (widgetInitialized) {
             return;
         }
 
         self.parentController = parentController;
         self.userId = userId;
-        self.appId = appId;
+        self.appId = applicationId;
         self.sections = sections;
         self.env = env;
         
@@ -247,14 +247,14 @@ public class CerebellumWidget {
     
     func insertParametersToTemplate(_ template: String,
                                     widgetUrl: String,
-                                    userId: String,
+                                    userId: String?,
                                     appId: String,
                                     env: String,
                                     mode: String,
                                     sections: String) -> String {
         return template
             .replacingOccurrences(of: "::widgetUrl::", with: widgetUrl)
-            .replacingOccurrences(of: "::userId::", with: userId)
+            .replacingOccurrences(of: "::userId::", with: userId ?? "")
             .replacingOccurrences(of: "::appId::", with: appId)
             .replacingOccurrences(of: "::env::", with: env)
             .replacingOccurrences(of: "::mode::", with: mode)
