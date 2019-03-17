@@ -25,8 +25,8 @@ class ViewController: UIViewController {
         super.viewDidLoad();
         
         crbWidget.initAndLoad(parentController: self,
+                              applicationId: "239",
                               userId: "test@example.com",
-                              appId: "239",
                               sections: ["top_section_1", "top_section_2", "top_section_3"],
                               env: Environment.STAGE);
         crbWidget.show();

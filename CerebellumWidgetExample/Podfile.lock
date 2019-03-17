@@ -6,7 +6,7 @@ PODS:
   - WebViewJavascriptBridge (6.0.3)
 
 DEPENDENCIES:
-  - CerebellumWidget (from `./../../CerebellumWidget/`)
+  - CerebellumWidget (from `./../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -15,13 +15,13 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   CerebellumWidget:
-    :path: "./../../CerebellumWidget/"
+    :path: "./../"
 
 SPEC CHECKSUMS:
-  CerebellumWidget: 1bfcee03c0e2291a329f2e70a248d78ce11c7c16
+  CerebellumWidget: 03a2cf536102e99a15600daa223e89f2fd046700
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
-PODFILE CHECKSUM: a0d3ee47c750002c482f42c1c471aeac58116b01
+PODFILE CHECKSUM: 542941d29c56cc4622c340953a6c898e12669c86
 
 COCOAPODS: 1.5.3
