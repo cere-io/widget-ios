@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.source_files  = "CerebellumWidget/**/*.swift"
   s.resources = "CerebellumWidget/Assets/*.html"
 
-  s.swift_version = "3" 
+  s.swift_version = "4.2" 
 
   s.dependency "WebViewJavascriptBridge", "~>6.0"
   s.dependency "SwiftyJSON"
