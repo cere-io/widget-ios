@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 import WebViewJavascriptBridge
 
-public class CerebellumWidget {
+public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
@@ -31,8 +31,6 @@ public class CerebellumWidget {
     public var defaultFrame: CGRect?;
     public var frameGapFactor: CGFloat = 0.05; // Should be between 0 .. 0.5.
 
-    public init() {}
-    
     public func initAndLoad(parentController: UIViewController, applicationId: String, userId: String? = nil, sections: [String] = ["default"], env: Environment = Environment.PRODUCTION) {
         if (widgetInitialized) {
             return;
