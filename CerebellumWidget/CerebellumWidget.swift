@@ -11,6 +11,8 @@ import UIKit
 import WebKit
 import WebViewJavascriptBridge
 
+/// Class that implements CerebellumWidgetProtocol and provides all the functionality of the widget.
+///
 public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
@@ -28,9 +30,20 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
     
+    /// Stores initial size of the widget. Default value is whole screen size, but frame with width * frameGapFactor and height * frameGapFactor.
     public var defaultFrame: CGRect?;
+    
+    /// Factor that specifies width of the frame between the widget and screen bounds.
     public var frameGapFactor: CGFloat = 0.05; // Should be between 0 .. 0.5.
 
+    /// Initializes and prepares the widget for usage.
+    /// - Parameter: parentController: controller that will host the widget view and is responsible for showing/hiding the widget.
+    /// - Parameter: applicationId: identifier of the application from RMS.
+    /// - Parameter: userId: (optional) email of user that is using widget. If user is not authorized, this parameter can be omit.
+    /// - Parameter: sections: (optional) section name from RMS with rewards. It is used if you need to show widget in
+    /// more than one place in your application with different rewards.
+    /// - Parameter: env: Environment for running the widget (`PRODUCTION` is default).
+    ///
     public func initAndLoad(parentController: UIViewController, applicationId: String, userId: String? = nil, sections: [String] = ["default"], env: Environment = Environment.PRODUCTION) {
         if (widgetInitialized) {
             return;
@@ -46,6 +59,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         setupDefaultHandlers();
     }
 
+    /// Shows the widget if it is hidden.
     public func show() {
         self.queueHandler({() in
             self.setView(visible: true);
@@ -53,18 +67,21 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         });
     }
     
+    /// Hides the widget.
     public func hide() {
         self.queueHandler({() in
             self.setView(visible: false);
         });
     }
 
+    /// Autofills specified field with value to reduce amount of questions to user (i.e. `email`).
     public func sendDataToField(fieldName: String, value: String) {
         self.queueHandler({() in
             self.executeJS(method: "sendToField", withParams: "'\(fieldName)', '\(value)'");
         });
     }
 
+    /// Sets the mode to present the widget.
     public func setMode(mode: WidgetMode) {
         self.mode = mode;
         
@@ -73,18 +90,30 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         });
     }
     
+    /// Sets additional information to be shown in widget in JSON format. Only `level` and `name` are supported now.
+    /// Example:
+    /// ```JSON
+    ///     {
+    ///         userData:
+    ///         {
+    ///             name: "Junior",
+    ///             level: 1,
+    ///         }
+    ///     }
     public func setUserData(data: String) {
         self.queueHandler({() in
             self.executeJS(method: "setUserData", withParams: data);
         });
     }
     
+    /// Minimizes the widget.
     public func collapse() {
         self.queueHandler({() in
             self.setView(visible: false);
         });
     }
     
+    /// Expanding the widget view on full screen.
     public func expand() {
         self.queueHandler({() in
             let s = UIScreen.main.bounds;
@@ -93,17 +122,20 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         });
     }
 
+    /// Restores size of the widget after expanding.
     public func restore() {
         self.queueHandler({() in
             self.webView?.frame = self.defaultFrame!;
         });
     }
     
+    /// Sets custom size for the widget.
     public func resize(width: CGFloat, height: CGFloat) {
         self.webView?.frame.size.height = height;
         self.webView?.frame.size.width = width;
     }
     
+    /// Logs out of the widget.
     public func logout() {
         self.queueHandler({() in
             self.bridge?.callHandler("logout");
@@ -111,12 +143,14 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         });
     }
     
+    /// Sets handler that is called when widget is finished initialization.
     public func onInitializationFinished(_ handler: @escaping OnInitializationFinishedHandler) -> CerebellumWidget {
         self.onInitializationFinishedHandler = handler;
         
         return self;
     }
     
+    /// Sets handler that is called on widget closed.
     public func onHide(_ handler: @escaping OnHideHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onHide",
@@ -126,18 +160,21 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         return self;
     }
     
+    /// Sets handler to be called when user finished sign up flow.
     public func onSignUp(_ handler: @escaping OnSignUpHandler) -> CerebellumWidget {
         self.onSignUpHandler = handler;
         
         return self;
     }
     
+    /// Sets handler to be called when user successfully signed in to the widget.
     public func onSignIn(_ handler: @escaping OnSignInHandler) -> CerebellumWidget {
         self.onSignInHandler = handler;
         
         return self;
     }
     
+    /// Sets handler to be called when user wants to buy non fungible reward like gift card. Additional actions should be performed in the hosting app.
     public func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onProcessNonFungibleReward",
@@ -147,6 +184,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         return self;
     }
     
+    /// Sets handler to be called when user opens Inventory tab. List of redeemed rewards should be passed to the widget.
     public func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> CerebellumWidget {
         self.queueHandler({() in
             self.bridge?.registerHandler("onGetClaimedRewards",
@@ -156,6 +194,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         return self;
     }
     
+    /// Sets handler to be called when user provides email in the widget to ask hosting app if the user is registered in the app.
     public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> CerebellumWidget {
         self.onGetUserByEmailHandler = handler;
         

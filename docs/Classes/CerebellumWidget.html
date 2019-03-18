@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CerebellumWidget Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/CerebellumWidget" class="dashAnchor"></a>
+    <a title="CerebellumWidget Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">CerebellumWidget Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">CerebellumWidget Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CerebellumWidget Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CerebellumWidget.html">CerebellumWidget</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ClaimedRewardItem.html">ClaimedRewardItem</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/WidgetMode.html">WidgetMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/CerebellumWidgetProtocol.html">CerebellumWidgetProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Environment.html">Environment</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget25GetClaimedRewardsCallbacka">GetClaimedRewardsCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget22GetUserByEmailCallbacka">GetUserByEmailCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget26OnGetClaimedRewardsHandlera">OnGetClaimedRewardsHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget23OnGetUserByEmailHandlera">OnGetUserByEmailHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget13OnHideHandlera">OnHideHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget31OnInitializationFinishedHandlera">OnInitializationFinishedHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget33OnProcessNonFungibleRewardHandlera">OnProcessNonFungibleRewardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget15OnSignInHandlera">OnSignInHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16CerebellumWidget15OnSignUpHandlera">OnSignUpHandler</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CerebellumWidget</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CerebellumWidget</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/CerebellumWidgetProtocol.html">CerebellumWidgetProtocol</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Class that implements CerebellumWidgetProtocol and provides all the functionality of the widget.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC12defaultFrameSo6CGRectVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/defaultFrame" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC12defaultFrameSo6CGRectVSgvp">defaultFrame</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stores initial size of the widget. Default value is whole screen size, but frame with width * frameGapFactor and height * frameGapFactor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">defaultFrame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC14frameGapFactor12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/frameGapFactor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC14frameGapFactor12CoreGraphics7CGFloatVvp">frameGapFactor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Factor that specifies width of the frame between the widget and screen bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">frameGapFactor</span><span class="p">:</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC11initAndLoad16parentController13applicationId04userI08sections3envySo06UIViewG0C_S2SSgSaySSGAA11EnvironmentVtF"></a>
+                    <a name="//apple_ref/swift/Method/initAndLoad(parentController:applicationId:userId:sections:env:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC11initAndLoad16parentController13applicationId04userI08sections3envySo06UIViewG0C_S2SSgSaySSGAA11EnvironmentVtF">initAndLoad(parentController:applicationId:userId:sections:env:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes and prepares the widget for usage.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">initAndLoad</span><span class="p">(</span><span class="nv">parentController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">applicationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">userId</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">sections</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"default"</span><span class="p">],</span> <span class="nv">env</span><span class="p">:</span> <span class="kt"><a href="../Structs/Environment.html">Environment</a></span> <span class="o">=</span> <span class="kt"><a href="../Structs/Environment.html">Environment</a></span><span class="o">.</span><span class="kt">PRODUCTION</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC4showyyF"></a>
+                    <a name="//apple_ref/swift/Method/show()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC4showyyF">show()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Shows the widget if it is hidden.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">show</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC4hideyyF"></a>
+                    <a name="//apple_ref/swift/Method/hide()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC4hideyyF">hide()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Hides the widget.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hide</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC15sendDataToField9fieldName5valueySS_SStF"></a>
+                    <a name="//apple_ref/swift/Method/sendDataToField(fieldName:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC15sendDataToField9fieldName5valueySS_SStF">sendDataToField(fieldName:value:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Autofills specified field with value to reduce amount of questions to user (i.e. <code>email</code>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">sendDataToField</span><span class="p">(</span><span class="nv">fieldName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC7setMode4modeyAA0bD0O_tF"></a>
+                    <a name="//apple_ref/swift/Method/setMode(mode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC7setMode4modeyAA0bD0O_tF">setMode(mode:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the mode to present the widget.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setMode</span><span class="p">(</span><span class="nv">mode</span><span class="p">:</span> <span class="kt"><a href="../Enums/WidgetMode.html">WidgetMode</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC11setUserData4dataySS_tF"></a>
+                    <a name="//apple_ref/swift/Method/setUserData(data:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC11setUserData4dataySS_tF">setUserData(data:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets additional information to be shown in widget in JSON format. Only <code>level</code> and <code>name</code> are supported now.
+Example:</p>
+<pre class="highlight plaintext"><code>    {
+        userData:
+        {
+            name: "Junior",
+            level: 1,
+        }
+    }
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setUserData</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC8collapseyyF"></a>
+                    <a name="//apple_ref/swift/Method/collapse()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC8collapseyyF">collapse()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Minimizes the widget.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">collapse</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC6expandyyF"></a>
+                    <a name="//apple_ref/swift/Method/expand()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC6expandyyF">expand()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Expanding the widget view on full screen.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">expand</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC7restoreyyF"></a>
+                    <a name="//apple_ref/swift/Method/restore()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC7restoreyyF">restore()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Restores size of the widget after expanding.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">restore</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC6resize5width6heighty12CoreGraphics7CGFloatV_AHtF"></a>
+                    <a name="//apple_ref/swift/Method/resize(width:height:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC6resize5width6heighty12CoreGraphics7CGFloatV_AHtF">resize(width:height:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets custom size for the widget.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC6logoutyyF"></a>
+                    <a name="//apple_ref/swift/Method/logout()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC6logoutyyF">logout()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Logs out of the widget.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">logout</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC24onInitializationFinishedyABySbcF"></a>
+                    <a name="//apple_ref/swift/Method/onInitializationFinished(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC24onInitializationFinishedyABySbcF">onInitializationFinished(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets handler that is called when widget is finished initialization.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onInitializationFinished</span><span class="p">(</span><span class="n">_</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:16CerebellumWidget31OnInitializationFinishedHandlera">OnInitializationFinishedHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CerebellumWidget</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC6onHideyAByycF"></a>
+                    <a name="//apple_ref/swift/Method/onHide(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC6onHideyAByycF">onHide(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets handler that is called on widget closed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onHide</span><span class="p">(</span><span class="n">_</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:16CerebellumWidget13OnHideHandlera">OnHideHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CerebellumWidget</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC8onSignUpyABySS_S2SSDyS2SGtcF"></a>
+                    <a name="//apple_ref/swift/Method/onSignUp(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC8onSignUpyABySS_S2SSDyS2SGtcF">onSignUp(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets handler to be called when user finished sign up flow.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onSignUp</span><span class="p">(</span><span class="n">_</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:16CerebellumWidget15OnSignUpHandlera">OnSignUpHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CerebellumWidget</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC8onSignInyABySS_SSSDyS2SGtcF"></a>
+                    <a name="//apple_ref/swift/Method/onSignIn(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC8onSignInyABySS_SSSDyS2SGtcF">onSignIn(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets handler to be called when user successfully signed in to the widget.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onSignIn</span><span class="p">(</span><span class="n">_</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:16CerebellumWidget15OnSignInHandlera">OnSignInHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CerebellumWidget</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC26onProcessNonFungibleRewardyABySScF"></a>
+                    <a name="//apple_ref/swift/Method/onProcessNonFungibleReward(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC26onProcessNonFungibleRewardyABySScF">onProcessNonFungibleReward(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets handler to be called when user wants to buy non fungible reward like gift card. Additional actions should be performed in the hosting app.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onProcessNonFungibleReward</span><span class="p">(</span><span class="n">_</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:16CerebellumWidget33OnProcessNonFungibleRewardHandlera">OnProcessNonFungibleRewardHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CerebellumWidget</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC19onGetClaimedRewardsyAByySayAA0E10RewardItemCGccF"></a>
+                    <a name="//apple_ref/swift/Method/onGetClaimedRewards(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC19onGetClaimedRewardsyAByySayAA0E10RewardItemCGccF">onGetClaimedRewards(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets handler to be called when user opens Inventory tab. List of redeemed rewards should be passed to the widget.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onGetClaimedRewards</span><span class="p">(</span><span class="n">_</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:16CerebellumWidget26OnGetClaimedRewardsHandlera">OnGetClaimedRewardsHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CerebellumWidget</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16CerebellumWidgetAAC16onGetUserByEmailyABySS_ySbctcF"></a>
+                    <a name="//apple_ref/swift/Method/onGetUserByEmail(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16CerebellumWidgetAAC16onGetUserByEmailyABySS_ySbctcF">onGetUserByEmail(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets handler to be called when user provides email in the widget to ask hosting app if the user is registered in the app.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">onGetUserByEmail</span><span class="p">(</span><span class="n">_</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:16CerebellumWidget23OnGetUserByEmailHandlera">OnGetUserByEmailHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CerebellumWidget</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="http://cere.io" target="_blank" rel="external">Cerebellum Network Inc.</a>. All rights reserved. (Last updated: 2019-03-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

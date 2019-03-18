@@ -2,7 +2,7 @@
 
 ## About
 
-This project will allow you with a quick ans simple interface to include Cerebellum inside your iOS Application.
+This project allows with a quick and simple interface to include Cerebellum inside your iOS Application.
 
 ## Installation
 
@@ -69,6 +69,7 @@ At this point widget is basically loaded and ready to work. To show it just call
 | hide | Hides the widget manually |
 | collapse | Similar to hide, but is triggered when user clicks minimize button in widget (hidden by default) |
 | resize | Resized widget to custom size |
+| sendDataToField | Autofills specified field with value to reduce amount of questions to user (i.e. `email`). |
 | setMode | Sets widget mode. Currently two modes are supported: REWARDS (default one) and LOGIN |
 | setUserData | Sets data required for some fields of the widget like `name` or `level`. Should be passes as JSON string '{userData: {name: "Junior", level: 1}'
 | logout | Logs out user from widget |
