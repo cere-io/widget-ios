@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CerebellumWidget"
-  s.version      = "1.0.2"
+  s.version      = "1.1.0"
   s.summary      = "Cerebellum widget SDK for iOS."
   s.description  = "The library includes all the stuff required to embed Cerebellum widget to your iOS application."
   s.homepage     = "http://cere.io"
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.source_files  = "CerebellumWidget/**/*.swift"
   s.resources = "CerebellumWidget/Assets/*.html"
 
-  s.swift_version = "3" 
+  s.swift_version = "4.2" 
 
   s.dependency "WebViewJavascriptBridge", "~>6.0"
   s.dependency "SwiftyJSON"

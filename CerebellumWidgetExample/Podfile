@@ -1,0 +1,7 @@
+platform :ios, '9.0'
+
+target 'CerebellumWidgetExample' do
+  use_frameworks!
+  pod 'CerebellumWidget', :path => './../'
+
+end

@@ -53,7 +53,7 @@
             setItem: function(key, value) {
               console.log('NativeStorage::setNativeStorageItem');
               return new Promise(function(resolve, reject) {
-                bridge.callHandler('setNativeStorageItem', [key, typeof value === 'string' ? value : JSON.stringify(value)], function(response) {
+                bridge.callHandler('setNativeStorageItem', [key, value], function(response) {
                       console.log('result', response);
                       if (response === 'false') {
                         reject();

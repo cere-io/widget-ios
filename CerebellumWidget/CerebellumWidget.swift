@@ -11,16 +11,19 @@ import UIKit
 import WebKit
 import WebViewJavascriptBridge
 
-public class CerebellumWidget {
+public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
     var onInitializationFinishedHandler: OnInitializationFinishedHandler?;
+    var onGetUserByEmailHandler: OnGetUserByEmailHandler?;
+    var onSignInHandler: OnSignInHandler?;
+    var onSignUpHandler: OnSignUpHandler?;
 
     internal var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
     private var appId: String = "";
-    private var userId: String = "";
+    private var userId: String?;
     private var sections: [String] = [];
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
@@ -28,22 +31,21 @@ public class CerebellumWidget {
     public var defaultFrame: CGRect?;
     public var frameGapFactor: CGFloat = 0.05; // Should be between 0 .. 0.5.
 
-    public init() {}
-    
-    public func initAndLoad(parentController: UIViewController, userId: String, appId: String, sections: [String], env: Environment = Environment.PRODUCTION) {
+    public func initAndLoad(parentController: UIViewController, applicationId: String, userId: String? = nil, sections: [String] = ["default"], env: Environment = Environment.PRODUCTION) {
         if (widgetInitialized) {
             return;
         }
 
         self.parentController = parentController;
         self.userId = userId;
-        self.appId = appId;
+        self.appId = applicationId;
         self.sections = sections;
         self.env = env;
         
         load();
+        setupDefaultHandlers();
     }
-    
+
     public func show() {
         self.queueHandler({() in
             self.setView(visible: true);
@@ -125,19 +127,13 @@ public class CerebellumWidget {
     }
     
     public func onSignUp(_ handler: @escaping OnSignUpHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onSignUp",
-                                         handler: OnSignUpHandlerMapper(handler).map());
-        });
+        self.onSignUpHandler = handler;
         
         return self;
     }
     
     public func onSignIn(_ handler: @escaping OnSignInHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onSignIn",
-                                     handler: OnSignInHandlerMapper(handler).map());
-        });
+        self.onSignInHandler = handler;
         
         return self;
     }
@@ -161,10 +157,7 @@ public class CerebellumWidget {
     }
     
     public func onGetUserByEmail(_ handler: @escaping OnGetUserByEmailHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onGetUserByEmail",
-                                         handler: OnGetUserByEmailHandlerMapper(handler).map());
-        });
+        self.onGetUserByEmailHandler = handler;
         
         return self;
     }
@@ -252,14 +245,14 @@ public class CerebellumWidget {
     
     func insertParametersToTemplate(_ template: String,
                                     widgetUrl: String,
-                                    userId: String,
+                                    userId: String?,
                                     appId: String,
                                     env: String,
                                     mode: String,
                                     sections: String) -> String {
         return template
             .replacingOccurrences(of: "::widgetUrl::", with: widgetUrl)
-            .replacingOccurrences(of: "::userId::", with: userId)
+            .replacingOccurrences(of: "::userId::", with: userId ?? "")
             .replacingOccurrences(of: "::appId::", with: appId)
             .replacingOccurrences(of: "::env::", with: env)
             .replacingOccurrences(of: "::mode::", with: mode)
@@ -276,5 +269,46 @@ public class CerebellumWidget {
         for handler in self.handlerQueue {
             handler();
         }
+    }
+
+    private func setupDefaultHandlers() {
+        self.queueHandler({() in
+            self.bridge?.registerHandler("onGetUserByEmail",
+                                         handler: OnGetUserByEmailHandlerMapper({(
+                                            email: String,
+                                            callback: @escaping GetUserByEmailCallback) in
+                                            if (self.onGetUserByEmailHandler != nil) {
+                                                self.onGetUserByEmailHandler!(email, callback);
+                                            } else {
+                                                callback(false);
+                                            }
+                                         }).map());
+            
+            self.bridge?.registerHandler("onSignIn",
+                                         handler: OnSignInHandlerMapper({(
+                                            email: String,
+                                            token: String,
+                                            extras: [String: String]) in
+                                            if (self.onSignInHandler != nil) {
+                                                self.onSignInHandler!(email, token, extras);
+                                            } else {
+                                                self.setMode(mode: WidgetMode.REWARDS);
+                                            }
+                                         }).map());
+
+            
+            self.bridge?.registerHandler("onSignUp",
+                                         handler: OnSignUpHandlerMapper({(
+                                            email: String,
+                                            token: String,
+                                            password: String,
+                                            extras: [String: String]) in
+                                            if (self.onSignUpHandler != nil) {
+                                                self.onSignUpHandler!(email, token, password, extras);
+                                            } else {
+                                                self.setMode(mode: WidgetMode.REWARDS);
+                                            }
+                                         }).map());
+        });
     }
 }

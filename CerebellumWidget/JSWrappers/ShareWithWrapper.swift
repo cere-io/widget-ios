@@ -46,7 +46,7 @@ class ShareWithWrapper : JsProtocolWithResponse {
             
             if (url != nil) {
                 if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url!, options: [:], completionHandler: nil);
+                    UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil);
                 } else {
                     UIApplication.shared.openURL(url!);
                 };
@@ -73,13 +73,18 @@ class ShareWithWrapper : JsProtocolWithResponse {
         }
         
         if (!UIApplication.shared.canOpenURL(URL(string: "\(url)://app")!)) {
-            let alert = UIAlertController(title: "Message", message: "You do not have this application. Download it in App Store to share our url.", preferredStyle: UIAlertControllerStyle.alert);
+            let alert = UIAlertController(title: "Message", message: "You do not have this application. Download it in App Store to share our url.", preferredStyle: UIAlertController.Style.alert);
             
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil));
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil));
             
             widget.parentController!.present(alert, animated: true, completion: nil);
         }
         
         return true;
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
