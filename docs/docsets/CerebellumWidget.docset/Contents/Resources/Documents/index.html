@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CerebellumWidget  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="CerebellumWidget  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">CerebellumWidget Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">CerebellumWidget Reference</a>
+        <img id="carat" src="img/carat.png" />
+        CerebellumWidget  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/CerebellumWidget.html">CerebellumWidget</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ClaimedRewardItem.html">ClaimedRewardItem</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/WidgetMode.html">WidgetMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/CerebellumWidgetProtocol.html">CerebellumWidgetProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Environment.html">Environment</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget25GetClaimedRewardsCallbacka">GetClaimedRewardsCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget22GetUserByEmailCallbacka">GetUserByEmailCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget26OnGetClaimedRewardsHandlera">OnGetClaimedRewardsHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget23OnGetUserByEmailHandlera">OnGetUserByEmailHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget13OnHideHandlera">OnHideHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget31OnInitializationFinishedHandlera">OnInitializationFinishedHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget33OnProcessNonFungibleRewardHandlera">OnProcessNonFungibleRewardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget15OnSignInHandlera">OnSignInHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:16CerebellumWidget15OnSignUpHandlera">OnSignUpHandler</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='ios-sdk-for-cerebellum-widget' class='heading'>iOS SDK for Cerebellum Widget</h1>
+<h2 id='about' class='heading'>About</h2>
+
+<p>This project allows with a quick and simple interface to include Cerebellum inside your iOS Application.</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>The easiest way to integrate widget to iOS application is to use CocoaPods. In your Podfile add the following line:</p>
+<pre class="highlight plaintext"><code>pod 'CerebellumWidget', :git =&gt; 'git@github.com:funler/widget-ios.git'
+</code></pre>
+
+<p>then run the following command to install new pod:</p>
+<pre class="highlight plaintext"><code>pod install
+</code></pre>
+
+<p>That&rsquo;s it. Or you can use classic way:</p>
+
+<ol>
+<li>Create a copy of latest version of this project (We recommend add it as a submodule of your project)</li>
+<li>Open your iOS Project inside Xcode.</li>
+<li>Target your Project and go to General Settings.</li>
+<li>Under Embedded Binaries Click <code>+</code> and then <code>Add Other ...</code></li>
+<li>Select <code>CerebellumWidget.xcodeproj</code> from the copy of this repository, and add it.</li>
+<li>Now Click <code>+</code> again and <code><a href="Classes/CerebellumWidget.html">CerebellumWidget</a></code> should appear, select <code>CerebellumWidget.framework</code> and <code>Add</code></li>
+<li>In case you are using Swift you need to include <code>CerebellumWidget.h</code> so you can reference it later</li>
+</ol>
+<pre class="highlight swift"><code>    <span class="cp">#import "../../../widget-ios/CerebellumWidget/CerebellumWidget/CerebellumWidget.h"</span>
+</code></pre>
+
+<p>This can be done in any Header bridge you may have.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p>You need to add the widget to any View you would like.</p>
+<pre class="highlight swift"><code>    <span class="kd">import</span> <span class="kt">CerebellumWidget</span>
+
+    <span class="o">...</span>
+
+    <span class="k">let</span> <span class="nv">crbWidget</span> <span class="o">=</span> <span class="kt">CerebellumWidget</span><span class="p">();</span>
+
+    <span class="o">...</span>
+
+    <span class="k">self</span><span class="o">.</span><span class="n">crbWidget</span><span class="o">.</span><span class="nf">initAndLoad</span><span class="p">(</span>
+        <span class="nv">parentController</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span>
+        <span class="nv">applicationId</span><span class="p">:</span> <span class="s">"777"</span><span class="p">,</span>
+        <span class="nv">userId</span><span class="p">:</span> <span class="s">"authorized@user.com"</span><span class="p">,</span>
+        <span class="nv">sections</span><span class="p">:</span> <span class="p">[</span><span class="s">"top_section_1"</span><span class="p">,</span> <span class="s">"top_section_2"</span><span class="p">,</span> <span class="s">"top_section_3"</span><span class="p">]);</span>
+</code></pre>
+
+<p>Parameter <code>applicationId</code> should be taken from RMS and is mandatory. Parameter <code>userId</code> can be specified if you know the user who is using the widget, otherwise it can be omit (or <code>nil</code>). Parameter <code>sections</code> depends on your RMS configuration. If you use <code>default</code> placement for rewards you can omit this parameter.
+At this point widget is basically loaded and ready to work. To show it just call:</p>
+<pre class="highlight swift"><code>    <span class="k">self</span><span class="o">.</span><span class="n">crbWidget</span><span class="o">.</span><span class="nf">show</span><span class="p">();</span>
+</code></pre>
+<h2 id='api-reference' class='heading'>API Reference</h2>
+<h3 id='methods' class='heading'>Methods</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Signature</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">initAndLoad</td>
+<td style="text-align: left">Initializes widget for the app (with parameters are taken from RMS) and loads widget content</td>
+</tr>
+<tr>
+<td style="text-align: left">show</td>
+<td style="text-align: left">Shows the widget if it was hidden or closed</td>
+</tr>
+<tr>
+<td style="text-align: left">expand</td>
+<td style="text-align: left">Shows widget expanded on whole screen</td>
+</tr>
+<tr>
+<td style="text-align: left">restore</td>
+<td style="text-align: left">Restores widget to normal view size after expanding</td>
+</tr>
+<tr>
+<td style="text-align: left">hide</td>
+<td style="text-align: left">Hides the widget manually</td>
+</tr>
+<tr>
+<td style="text-align: left">collapse</td>
+<td style="text-align: left">Similar to hide, but is triggered when user clicks minimize button in widget (hidden by default)</td>
+</tr>
+<tr>
+<td style="text-align: left">resize</td>
+<td style="text-align: left">Resized widget to custom size</td>
+</tr>
+<tr>
+<td style="text-align: left">sendDataToField</td>
+<td style="text-align: left">Autofills specified field with value to reduce amount of questions to user (i.e. <code>email</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left">setMode</td>
+<td style="text-align: left">Sets widget mode. Currently two modes are supported: REWARDS (default one) and LOGIN</td>
+</tr>
+<tr>
+<td style="text-align: left">setUserData</td>
+<td style="text-align: left">Sets data required for some fields of the widget like <code>name</code> or <code>level</code>. Should be passes as JSON string &lsquo;{userData: {name: <q>Junior</q>, level: 1}&rsquo;</td>
+</tr>
+<tr>
+<td style="text-align: left">logout</td>
+<td style="text-align: left">Logs out user from widget</td>
+</tr>
+</tbody></table>
+<h3 id='events' class='heading'>Events</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Signature</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">onHide</td>
+<td style="text-align: left">Triggered when user clicks close button on widget and it is about to close</td>
+</tr>
+<tr>
+<td style="text-align: left">onSignUp</td>
+<td style="text-align: left">Triggered when user completes sign up in widget</td>
+</tr>
+<tr>
+<td style="text-align: left">onSignIn</td>
+<td style="text-align: left">Triggered when user signs in to widget</td>
+</tr>
+<tr>
+<td style="text-align: left">onProcessNonFungibleReward</td>
+<td style="text-align: left">Triggered when user wants to buy non fungible reward like gift card. Additional actions should be performed in the hosting app</td>
+</tr>
+<tr>
+<td style="text-align: left">onGetClaimedRewards</td>
+<td style="text-align: left">List of redeemed rewards should be passed to widget with this event. Triggered when user opens inventory tab</td>
+</tr>
+<tr>
+<td style="text-align: left">onGetUserByEmail</td>
+<td style="text-align: left">Triggered on sign up to know if user exists in app, but new in the widget</td>
+</tr>
+</tbody></table>
+
+<p>On more detailed information of using the widget in your app please see CerebellumWidgetExample app.</p>
+<h2 id='upcoming-installation-methods' class='heading'>Upcoming installation Methods</h2>
+
+<ul>
+<li>Carthage</li>
+<li>Swift package manager</li>
+</ul>
+<h2 id='pending-implementations' class='heading'>Pending implementations</h2>
+
+<ul>
+<li>Full social sharing support</li>
+</ul>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="http://cere.io" target="_blank" rel="external">Cerebellum Network Inc.</a>. All rights reserved. (Last updated: 2019-03-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

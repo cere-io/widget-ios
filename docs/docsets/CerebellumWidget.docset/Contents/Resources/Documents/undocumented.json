@@ -1,0 +1,68 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 11,
+      "symbol": "OnHideHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 13,
+      "symbol": "OnSignUpHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 18,
+      "symbol": "OnSignInHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 22,
+      "symbol": "OnProcessNonFungibleRewardHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 24,
+      "symbol": "OnGetClaimedRewardsHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 25,
+      "symbol": "GetClaimedRewardsCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 27,
+      "symbol": "OnGetUserByEmailHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 29,
+      "symbol": "GetUserByEmailCallback",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget/CerebellumWidget/Handlers/CustomHandlers.swift",
+      "line": 31,
+      "symbol": "OnInitializationFinishedHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/konstantin/Projects/widget-ios-new/CerebellumWidget"
+}
