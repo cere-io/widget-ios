@@ -81,7 +81,6 @@ At this point widget is basically loaded and ready to work. To show it just call
 | onHide | Triggered when user clicks close button on widget and it is about to close |
 | onSignUp | Triggered when user completes sign up in widget |
 | onSignIn | Triggered when user signs in to widget |
-| onProcessNonFungibleReward | Triggered when user wants to buy non fungible reward like gift card. Additional actions should be performed in the hosting app |
 | onGetClaimedRewards | List of redeemed rewards should be passed to widget with this event. Triggered when user opens inventory tab |
 | onGetUserByEmail | Triggered on sign up to know if user exists in app, but new in the widget |
 

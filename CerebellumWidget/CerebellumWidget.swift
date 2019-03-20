@@ -174,16 +174,6 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         return self;
     }
     
-    /// Sets handler to be called when user wants to buy non fungible reward like gift card. Additional actions should be performed in the hosting app.
-    public func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onProcessNonFungibleReward",
-                                         handler: OnProcessNonFungibleRewardHandlerMapper(handler).map());
-        });
-        
-        return self;
-    }
-    
     /// Sets handler to be called when user opens Inventory tab. List of redeemed rewards should be passed to the widget.
     public func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> CerebellumWidget {
         self.queueHandler({() in

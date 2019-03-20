@@ -33,7 +33,6 @@
 		B5EB4F35220875B8004EA1B5 /* OnSignUpHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F34220875B8004EA1B5 /* OnSignUpHandlerMapper.swift */; };
 		B5EB4F3722087E6A004EA1B5 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3622087E6A004EA1B5 /* Helpers.swift */; };
 		B5EB4F3922088533004EA1B5 /* OnSignInHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3822088533004EA1B5 /* OnSignInHandlerMapper.swift */; };
-		B5EB4F3B2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3A2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift */; };
 		B5EB4F3E22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3D22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift */; };
 		B5EB4F4022089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F3F22089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift */; };
 		B5EB4F5B220AE754004EA1B5 /* CollapseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F5A220AE754004EA1B5 /* CollapseWrapper.swift */; };
@@ -85,7 +84,6 @@
 		B5EB4F34220875B8004EA1B5 /* OnSignUpHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnSignUpHandlerMapper.swift; sourceTree = "<group>"; };
 		B5EB4F3622087E6A004EA1B5 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		B5EB4F3822088533004EA1B5 /* OnSignInHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnSignInHandlerMapper.swift; sourceTree = "<group>"; };
-		B5EB4F3A2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnProcessNonFungibleRewardHandlerMapper.swift; sourceTree = "<group>"; };
 		B5EB4F3D22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGetClaimedRewardsHandlerMapper.swift; sourceTree = "<group>"; };
 		B5EB4F3F22089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnGetUserByEmailHandlerMapper.swift; sourceTree = "<group>"; };
 		B5EB4F5A220AE754004EA1B5 /* CollapseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseWrapper.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				B5EB4F32220870E3004EA1B5 /* OnHideHandlerMapper.swift */,
 				B5EB4F34220875B8004EA1B5 /* OnSignUpHandlerMapper.swift */,
 				B5EB4F3822088533004EA1B5 /* OnSignInHandlerMapper.swift */,
-				B5EB4F3A2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift */,
 				B5EB4F3D22089213004EA1B5 /* OnGetClaimedRewardsHandlerMapper.swift */,
 				B5EB4F3F22089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift */,
 			);
@@ -441,7 +438,6 @@
 				B5EB4F5F220AE778004EA1B5 /* ShowWrapper.swift in Sources */,
 				B551C676223EECEE0099CBAA /* CerebellumWidgetProtocol.swift in Sources */,
 				B5EB4F33220870E3004EA1B5 /* OnHideHandlerMapper.swift in Sources */,
-				B5EB4F3B2208875C004EA1B5 /* OnProcessNonFungibleRewardHandlerMapper.swift in Sources */,
 				B5EB4F4022089618004EA1B5 /* OnGetUserByEmailHandlerMapper.swift in Sources */,
 				B5EB4F1322045232004EA1B5 /* StorageService.swift in Sources */,
 				B5EB4F65220AE7BC004EA1B5 /* LogoutWrapper.swift in Sources */,

@@ -29,9 +29,6 @@ public typealias OnSignInHandler = (_ email: String,
                                     _ token: String,
                                     _ extras: [String: String]) -> Void;
 
-/// Type for onHide event handler.
-public typealias OnProcessNonFungibleRewardHandler = (_ data: String) -> Void;
-
 /// Type for onGetClaimedRewards event handler.
 public typealias OnGetClaimedRewardsHandler = (_ callback: @escaping GetClaimedRewardsCallback) -> Void;
 /// Type for GetClaimedRewardsCallback parameter that is used for onGetClaimedRewards event handler.
