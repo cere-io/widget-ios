@@ -25,7 +25,6 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     internal var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
     private var appId: String = "";
-    private var userId: String?;
     private var sections: [String] = [];
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
@@ -39,18 +38,16 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     /// Initializes and prepares the widget for usage.
     /// - Parameter: parentController: controller that will host the widget view and is responsible for showing/hiding the widget.
     /// - Parameter: applicationId: identifier of the application from RMS.
-    /// - Parameter: userId: (optional) email of user that is using widget. If user is not authorized, this parameter can be omit.
     /// - Parameter: sections: (optional) section name from RMS with rewards. It is used if you need to show widget in
     /// more than one place in your application with different rewards.
     /// - Parameter: env: Environment for running the widget (`PRODUCTION` is default).
     ///
-    public func initAndLoad(parentController: UIViewController, applicationId: String, userId: String? = nil, sections: [String] = ["default"], env: Environment = Environment.PRODUCTION) {
+    public func initAndLoad(parentController: UIViewController, applicationId: String, sections: [String] = ["default"], env: Environment = Environment.PRODUCTION) {
         if (widgetInitialized) {
             return;
         }
 
         self.parentController = parentController;
-        self.userId = userId;
         self.appId = applicationId;
         self.sections = sections;
         self.env = env;
@@ -239,7 +236,6 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
             let content = insertParametersToTemplate(
                 template,
                 widgetUrl: env.sdkURL + Environment.bundleJSPath,
-                userId: self.userId,
                 appId: self.appId,
                 env: self.env.name,
                 mode: String(describing: self.mode).lowercased(),
@@ -274,14 +270,12 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     
     func insertParametersToTemplate(_ template: String,
                                     widgetUrl: String,
-                                    userId: String?,
                                     appId: String,
                                     env: String,
                                     mode: String,
                                     sections: String) -> String {
         return template
             .replacingOccurrences(of: "::widgetUrl::", with: widgetUrl)
-            .replacingOccurrences(of: "::userId::", with: userId ?? "")
             .replacingOccurrences(of: "::appId::", with: appId)
             .replacingOccurrences(of: "::env::", with: env)
             .replacingOccurrences(of: "::mode::", with: mode)
