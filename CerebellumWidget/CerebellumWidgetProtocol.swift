@@ -53,9 +53,6 @@ public protocol CerebellumWidgetProtocol {
     /// The metod to set handler for `onSignIn` event.
     func onSignIn(_ handler: @escaping OnSignInHandler) -> CerebellumWidget;
     
-    /// The metod to set handler for `onProcessNonFungibleReward` event.
-    func onProcessNonFungibleReward(_ handler: @escaping OnProcessNonFungibleRewardHandler) -> CerebellumWidget;
-    
     /// The metod to set handler for `onGetClaimedRewards` event.
     func onGetClaimedRewards(_ handler: @escaping OnGetClaimedRewardsHandler) -> CerebellumWidget;
     

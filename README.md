@@ -46,11 +46,10 @@ You need to add the widget to any View you would like.
     self.crbWidget.initAndLoad(
         parentController: self,
         applicationId: "777",
-        userId: "authorized@user.com",
         sections: ["top_section_1", "top_section_2", "top_section_3"]);
 ```
 
-Parameter `applicationId` should be taken from RMS and is mandatory. Parameter `userId` can be specified if you know the user who is using the widget, otherwise it can be omit (or `nil`). Parameter `sections` depends on your RMS configuration. If you use `default` placement for rewards you can omit this parameter.
+Parameter `applicationId` should be taken from RMS and is mandatory. Parameter `sections` depends on your RMS configuration. If you use `default` placement for rewards you can omit this parameter.
 At this point widget is basically loaded and ready to work. To show it just call:
 
 ```swift
@@ -81,7 +80,6 @@ At this point widget is basically loaded and ready to work. To show it just call
 | onHide | Triggered when user clicks close button on widget and it is about to close |
 | onSignUp | Triggered when user completes sign up in widget |
 | onSignIn | Triggered when user signs in to widget |
-| onProcessNonFungibleReward | Triggered when user wants to buy non fungible reward like gift card. Additional actions should be performed in the hosting app |
 | onGetClaimedRewards | List of redeemed rewards should be passed to widget with this event. Triggered when user opens inventory tab |
 | onGetUserByEmail | Triggered on sign up to know if user exists in app, but new in the widget |
 
