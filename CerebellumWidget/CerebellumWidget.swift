@@ -240,14 +240,11 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     func attachBridge() {
         self.bridge = WebViewJavascriptBridge(forWebView: webView);
         
-        WebViewJavascriptBridge.enableLogging();
-        
-        for jsCallback in JSCallbackList {
-            bridge!.registerHandler(jsCallback.key, handler: { (data, responseCallback) in
-                
-                jsCallback.value.handleEvent(widget: self, data: data as AnyObject, responseCallback: responseCallback);
-            })
+        if (self.env.name != Environment.PRODUCTION.name) {
+            WebViewJavascriptBridge.enableLogging();
         }
+        
+        registerEventHandlers();
     }
 
     func setInitialized() {
@@ -274,6 +271,15 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         self.version = Bundle.init(for: type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String;
         
         print("Cerebellum Widget Version: ", version);
+    }
+    
+    private func registerEventHandlers() {
+        for jsCallback in JSCallbackList {
+            bridge!.registerHandler(jsCallback.key, handler: { (data, responseCallback) in
+                
+                jsCallback.value.handleEvent(widget: self, data: data as AnyObject, responseCallback: responseCallback);
+            })
+        }
     }
 
     private func setupDefaultHandlers() {
