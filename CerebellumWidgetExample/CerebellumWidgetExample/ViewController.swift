@@ -11,12 +11,23 @@ import CerebellumWidget
 
 class ViewController: UIViewController {
     var crbWidget = CerebellumWidget();
-
-    @IBAction func showButtonClicked(sender: Any) {
+    
+    @IBOutlet var logger: UILabel?;
+    
+    @IBAction func showRewardsButtonClicked(sender: Any) {
         crbWidget.setMode(mode: WidgetMode.REWARDS);
         crbWidget.show();
     }
-
+    
+    @IBAction func showLoginButtonClicked(sender: Any) {
+        crbWidget.setMode(mode: WidgetMode.LOGIN);
+        crbWidget.show();
+    }
+    
+    @IBAction func hideButtonClicked(sender: Any) {
+        crbWidget.hide();
+    }
+    
     @IBAction func logoutButtonClicked(sender: Any) {
         crbWidget.logout();
     }
@@ -29,5 +40,15 @@ class ViewController: UIViewController {
                               sections: ["top_section_1", "top_section_2", "top_section_3"],
                               env: Environment.STAGE);
         crbWidget.show();
+        
+        _ = crbWidget.onHide{
+            self.logger?.text?.append("Widget is closing!\n");
+        }
+        
+        _ = crbWidget.onGetUserByEmail {email, callback in
+            self.logger?.text?.append("Existence of user `\(email)` is requested\n");
+            
+            callback(Bool.random());
+        }
     }
 }

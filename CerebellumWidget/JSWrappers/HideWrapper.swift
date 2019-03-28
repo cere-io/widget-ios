@@ -12,6 +12,8 @@ class HideWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
         widget.hide();
         
+        widget.onHideHandler?();
+        
         responseCallback?(nil);
     }
 }

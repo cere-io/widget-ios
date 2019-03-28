@@ -13,7 +13,7 @@ import WebViewJavascriptBridge
 
 /// Class that implements CerebellumWidgetProtocol and provides all the functionality of the widget.
 ///
-public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
+public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationDelegate {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
     var parentController: UIViewController?;
@@ -21,6 +21,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     var onGetUserByEmailHandler: OnGetUserByEmailHandler?;
     var onSignInHandler: OnSignInHandler?;
     var onSignUpHandler: OnSignUpHandler?;
+    var onHideHandler: OnHideHandler?;
 
     internal var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
@@ -28,7 +29,8 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     private var sections: [String] = [];
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
-    
+    private var version: String = "unknown";
+
     /// Stores initial size of the widget. Default value is whole screen size, but frame with width * frameGapFactor and height * frameGapFactor.
     public var defaultFrame: CGRect?;
     
@@ -43,6 +45,8 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     /// - Parameter: env: Environment for running the widget (`PRODUCTION` is default).
     ///
     public func initAndLoad(parentController: UIViewController, applicationId: String, sections: [String] = ["default"], env: Environment = Environment.PRODUCTION) {
+        determineCurrentVersion();
+        
         if (widgetInitialized) {
             return;
         }
@@ -135,8 +139,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     /// Logs out of the widget.
     public func logout() {
         self.queueHandler({() in
-            self.bridge?.callHandler("logout");
-            //self.loadContent();
+            self.executeJS(method: "logout");
         });
     }
     
@@ -149,10 +152,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     
     /// Sets handler that is called on widget closed.
     public func onHide(_ handler: @escaping OnHideHandler) -> CerebellumWidget {
-        self.queueHandler({() in
-            self.bridge?.registerHandler("onHide",
-                                         handler: OnHideHandlerMapper(handler).map());
-        });
+        self.onHideHandler = handler;
 
         return self;
     }
@@ -217,6 +217,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         let configuration = WKWebViewConfiguration();
         
         self.webView = WKWebView(frame: .zero, configuration: configuration);
+        self.webView!.navigationDelegate = self;
         self.parentController!.view.addSubview(self.webView!);
     }
     
@@ -231,20 +232,9 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
     }
     
     func loadContent() {
-        do {
-            let template = try loadHtmlTemplate();
-            let content = insertParametersToTemplate(
-                template,
-                widgetUrl: env.sdkURL + Environment.bundleJSPath,
-                appId: self.appId,
-                env: self.env.name,
-                mode: String(describing: self.mode).lowercased(),
-                sections: self.sections.joined(separator: ","));
-            
-            self.webView!.loadHTMLString(content, baseURL: URL(string: env.widgetURL)!);
-        } catch {
-            print("Can not initialize widget");
-        }
+        self.webView!.load(URLRequest(url:
+            URL(string:
+                "\(env.widgetURL)/native.html?platform=ios&v=\(self.version)&appId=\(self.appId)&mode=\(String(describing: self.mode).lowercased())&env=\(self.env.name)&sections=\(self.sections.joined(separator: ","))")!));
     }
     
     func attachBridge() {
@@ -259,29 +249,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
             })
         }
     }
-    
-    func loadHtmlTemplate() throws -> String {
-        let path = Bundle(for: type(of: self)).path(forResource: "index", ofType: "html");
-        let content = try String(contentsOfFile: path!,
-                             encoding: String.Encoding.utf8);
-        
-        return content;
-    }
-    
-    func insertParametersToTemplate(_ template: String,
-                                    widgetUrl: String,
-                                    appId: String,
-                                    env: String,
-                                    mode: String,
-                                    sections: String) -> String {
-        return template
-            .replacingOccurrences(of: "::widgetUrl::", with: widgetUrl)
-            .replacingOccurrences(of: "::appId::", with: appId)
-            .replacingOccurrences(of: "::env::", with: env)
-            .replacingOccurrences(of: "::mode::", with: mode)
-            .replacingOccurrences(of: "::sections::", with: sections);
-    }
-    
+
     func setInitialized() {
         if (self.widgetInitialized) {
             return;
@@ -292,6 +260,20 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol {
         for handler in self.handlerQueue {
             handler();
         }
+    }
+    
+    private func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("Cerebellum Widget loading error: \(error.localizedDescription)");
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.loadContent();
+        }
+    }
+    
+    private func determineCurrentVersion() {
+        self.version = Bundle.init(for: type(of: self)).object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String;
+        
+        print("Cerebellum Widget Version: ", version);
     }
 
     private func setupDefaultHandlers() {

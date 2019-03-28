@@ -25,7 +25,6 @@
 		B5EB4F1322045232004EA1B5 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F1222045232004EA1B5 /* StorageService.swift */; };
 		B5EB4F25220470C2004EA1B5 /* JSCallbackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F24220470C2004EA1B5 /* JSCallbackList.swift */; };
 		B5EB4F2722047C3E004EA1B5 /* InitializedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2622047C3E004EA1B5 /* InitializedWrapper.swift */; };
-		B5EB4F2A22048ECD004EA1B5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = B5EB4F2922048ECC004EA1B5 /* index.html */; };
 		B5EB4F2C2204F251004EA1B5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2B2204F251004EA1B5 /* Environment.swift */; };
 		B5EB4F2E2206411C004EA1B5 /* WidgetMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */; };
 		B5EB4F302208671C004EA1B5 /* CustomHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB4F2F2208671C004EA1B5 /* CustomHandlers.swift */; };
@@ -76,7 +75,6 @@
 		B5EB4F1222045232004EA1B5 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		B5EB4F24220470C2004EA1B5 /* JSCallbackList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSCallbackList.swift; sourceTree = "<group>"; };
 		B5EB4F2622047C3E004EA1B5 /* InitializedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializedWrapper.swift; sourceTree = "<group>"; };
-		B5EB4F2922048ECC004EA1B5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		B5EB4F2B2204F251004EA1B5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		B5EB4F2D2206411C004EA1B5 /* WidgetMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMode.swift; sourceTree = "<group>"; };
 		B5EB4F2F2208671C004EA1B5 /* CustomHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHandlers.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				B5EB4F31220870CD004EA1B5 /* Handlers */,
-				B5EB4F2822048D1F004EA1B5 /* Assets */,
 				B5EB4F1122045225004EA1B5 /* Services */,
 				B5EB4F0822044C91004EA1B5 /* JSWrappers */,
 				B5EB4EC022033530004EA1B5 /* CerebellumWidget.h */,
@@ -188,14 +185,6 @@
 				B5EB4F1222045232004EA1B5 /* StorageService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		B5EB4F2822048D1F004EA1B5 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				B5EB4F2922048ECC004EA1B5 /* index.html */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		B5EB4F31220870CD004EA1B5 /* Handlers */ = {
@@ -327,7 +316,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EB4F2A22048ECD004EA1B5 /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
