@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CerebellumWidget"
-  s.version      = "1.1.2"
+  s.version      = "1.1.3"
   s.summary      = "Cerebellum widget SDK for iOS."
   s.description  = "The library includes all the stuff required to embed Cerebellum widget to your iOS application."
   s.homepage     = "http://cere.io"
@@ -23,7 +23,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "git@github.com:funler/widget-ios.git", :tag => s.version }
 
   s.source_files  = "CerebellumWidget/**/*.swift"
-  s.resources = "CerebellumWidget/Assets/*.html"
 
   s.swift_version = "4.2" 
 
