@@ -30,12 +30,14 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     private var widgetInitialized = false;
     private var handlerQueue: [()->Void] = [];
     private var version: String = "unknown";
-
+    
     /// Stores initial size of the widget. Default value is whole screen size, but frame with width * frameGapFactor and height * frameGapFactor.
     public var defaultFrame: CGRect?;
     
-    /// Factor that specifies width of the frame between the widget and screen bounds.
-    public var frameGapFactor: CGFloat = 0.05; // Should be between 0 .. 0.5.
+    private var leftPercentage: CGFloat = 5;
+    private var topPercentage: CGFloat = 5;
+    private var widthPercentage: CGFloat = 90;
+    private var heightPercentage: CGFloat = 90;
 
     /// Initializes and prepares the widget for usage.
     /// - Parameter: parentController: controller that will host the widget view and is responsible for showing/hiding the widget.
@@ -130,10 +132,29 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         });
     }
     
-    /// Sets custom size for the widget.
-    public func resize(width: CGFloat, height: CGFloat) {
-        self.webView?.frame.size.height = height;
-        self.webView?.frame.size.width = width;
+    /// Sets custom size for the widget. Parameters should be specified in percentage of screen bounds.
+    public func resize(left: CGFloat, top: CGFloat, width: CGFloat, height: CGFloat) {
+        self.leftPercentage = left;
+        self.topPercentage = top;
+        self.widthPercentage = width;
+        self.heightPercentage = height;
+        
+        self.redraw();
+    }
+    
+    /// Refreshes screen bounds and redraws the widget. This method should be called inside handler of parent view.
+    /// Example:
+    /// ```swift
+    /// override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    ///     super.viewWillTransition(to: size, with: coordinator);
+    ///
+    ///     coordinator.animate(alongsideTransition: nil, completion: { _ in
+    ///         self.crbWidget.redraw();
+    ///     });
+    /// }
+    public func redraw() {
+        self.initWidgetSize();
+        self.webView!.frame = self.defaultFrame!;
     }
     
     /// Logs out of the widget.
@@ -207,7 +228,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     }
     
     func load() {
-        initDefaultSize();
+        initWidgetSize();
         createViewAndAddAsSubview();
         attachBridge();
         loadContent();
@@ -221,14 +242,14 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         self.parentController!.view.addSubview(self.webView!);
     }
     
-    func initDefaultSize() {
+    func initWidgetSize() {
         let s = UIScreen.main.bounds;
         
         self.defaultFrame = CGRect(
-            x: s.minX + s.width * frameGapFactor,
-            y: s.minY + s.height * frameGapFactor,
-            width: s.width - 2 * s.width * frameGapFactor,
-            height: s.height - 2 * s.height * frameGapFactor);
+            x: s.minX + s.width * self.leftPercentage / 100,
+            y: s.minY + s.height * self.topPercentage / 100,
+            width: s.width * self.widthPercentage / 100,
+            height: s.height * self.heightPercentage / 100);
     }
     
     func loadContent() {

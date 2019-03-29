@@ -28,6 +28,18 @@ class ViewController: UIViewController {
         crbWidget.hide();
     }
     
+    var resized = false;
+    
+    @IBAction func resize(sender: Any) {
+        if (!resized) {
+            crbWidget.resize(left: 50, top: 5, width: 50, height: 95);
+        } else {
+            crbWidget.resize(left: 5, top: 5, width: 90, height: 90);
+        }
+        
+        resized = !resized;
+    }
+    
     @IBAction func logoutButtonClicked(sender: Any) {
         crbWidget.logout();
     }
@@ -50,5 +62,14 @@ class ViewController: UIViewController {
             
             callback(Bool.random());
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator);
+        
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            
+            self.crbWidget.redraw();
+        });
     }
 }

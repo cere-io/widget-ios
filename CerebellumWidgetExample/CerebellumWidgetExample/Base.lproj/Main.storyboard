@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="7mp-nT-lNm">
-                                <rect key="frame" x="0.0" y="20" width="101" height="129"/>
+                                <rect key="frame" x="0.0" y="20" width="101" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icR-LF-UWk">
@@ -36,15 +36,22 @@
                                             <action selector="showLoginButtonClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SRk-JV-Ge4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmG-oN-umu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z08-5o-buz">
                                         <rect key="frame" x="0.0" y="66" width="101" height="30"/>
+                                        <state key="normal" title="Resize"/>
+                                        <connections>
+                                            <action selector="resizeWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K0p-bZ-boG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmG-oN-umu">
+                                        <rect key="frame" x="0.0" y="99" width="101" height="30"/>
                                         <state key="normal" title="Hide"/>
                                         <connections>
                                             <action selector="hideButtonClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Be8-aq-ydY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oY-0r-dT9">
-                                        <rect key="frame" x="0.0" y="99" width="101" height="30"/>
+                                        <rect key="frame" x="0.0" y="132" width="101" height="30"/>
                                         <state key="normal" title="Logout"/>
                                         <connections>
                                             <action selector="logoutButtonClickedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="goo-RM-hax"/>
