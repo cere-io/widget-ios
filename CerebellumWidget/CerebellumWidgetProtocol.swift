@@ -35,8 +35,20 @@ public protocol CerebellumWidgetProtocol {
     /// This method should restore the widget to initial size after calling expand().
     func restore();
     
-    /// This method should set custom size for the widget.
-    func resize(width: CGFloat, height: CGFloat);
+    /// Sets custom size for the widget. Parameters should be specified in percentage of screen bounds.
+    func resize(left: CGFloat, top: CGFloat, width: CGFloat, height: CGFloat);
+    
+    /// Refreshes screen bounds and redraws the widget. This method should be called inside handler of parent view.
+    /// Example:
+    /// ```swift
+    /// override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    ///     super.viewWillTransition(to: size, with: coordinator);
+    ///
+    ///     coordinator.animate(alongsideTransition: nil, completion: { _ in
+    ///         self.crbWidget.redraw();
+    ///     });
+    /// }
+    func redraw();
     
     /// This method should log out the widget's user.
     func logout();
