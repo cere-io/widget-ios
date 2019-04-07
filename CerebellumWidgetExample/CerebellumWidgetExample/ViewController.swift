@@ -12,7 +12,7 @@ import CerebellumWidget
 class ViewController: UIViewController {
     var crbWidget = CerebellumWidget();
     
-    @IBOutlet var logger: UILabel?;
+    @IBOutlet var logger: UITextView!;
     
     @IBAction func showRewardsButtonClicked(sender: Any) {
         crbWidget.setMode(mode: WidgetMode.REWARDS);
@@ -54,14 +54,13 @@ class ViewController: UIViewController {
         crbWidget.show();
         
         _ = crbWidget.onHide{
-            self.logger?.text?.append("Widget is closing!\n");
+            self.logger.text.append("Widget is closing!\n");
         }
-        
-        _ = crbWidget.onGetUserByEmail {email, callback in
-            self.logger?.text?.append("Existence of user `\(email)` is requested\n");
+        .onGetUserByEmail {email, callback in
+            self.logger.text.append("Existence of user `\(email)` is requested\n");
             
             callback(Bool.random());
-        }
+        };
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

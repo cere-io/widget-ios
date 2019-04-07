@@ -3,5 +3,6 @@ platform :ios, '9.0'
 target 'CerebellumWidgetExample' do
   use_frameworks!
   pod 'CerebellumWidget', :path => './../'
+  # pod 'CerebellumWidget', :git => 'git@github.com:funler/widget-ios.git'
 
 end
