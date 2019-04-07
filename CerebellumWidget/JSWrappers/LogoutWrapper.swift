@@ -10,8 +10,6 @@ import Foundation
 
 class LogoutWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
-        widget.logout();
-        
         responseCallback?(nil);
     }
 }
