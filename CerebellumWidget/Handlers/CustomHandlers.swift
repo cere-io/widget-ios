@@ -11,20 +11,20 @@ import Foundation
 /// Type for onHide event handler.
 public typealias OnHideHandler = () -> Void;
 
-/// Type for oSignUp event handler.
-/// - Parameter: email: email of the user that finished sign up flow.
-/// - Parameter: token: jwt token of the user to be used for later signin to the widget.
-/// - Parameter: password: password of the user that finished sign up flow.
-/// - Parameter: extras: answers on the additional questions that was specified in RMS for new users.
+/// Type for onSignUp event handler.
+/// - Parameter email: email of the user that finished sign up flow.
+/// - Parameter token: jwt token of the user to be used for later signin to the widget.
+/// - Parameter password: password of the user that finished sign up flow.
+/// - Parameter extras: answers on the additional questions that was specified in RMS for new users.
 public typealias OnSignUpHandler = (_ email: String,
                                     _ token: String,
                                     _ password: String,
                                     _ extras: [String: String]) -> Void;
 
-/// Type for oSignIn event handler.
-/// - Parameter: email: email of the user that finished sign up flow.
-/// - Parameter: token: jwt token of the user to be used for later signin to the widget.
-/// - Parameter: extras: answers on the additional questions that was specified in RMS for new users.
+/// Type for onSignIn event handler.
+/// - Parameter email: email of the user that finished sign up flow.
+/// - Parameter token: jwt token of the user to be used for later signin to the widget.
+/// - Parameter extras: answers on the additional questions that was specified in RMS for new users.
 public typealias OnSignInHandler = (_ email: String,
                                     _ token: String,
                                     _ extras: [String: String]) -> Void;
