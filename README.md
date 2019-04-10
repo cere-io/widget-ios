@@ -45,10 +45,11 @@ You need to add the widget to any View you would like.
 
     self.crbWidget.initAndLoad(
         parentController: self,
-        applicationId: "777");
+        applicationId: "777",
+        placement: "MyAppPlacement");
 ```
 
-Parameter `applicationId` should be taken from RMS and is mandatory.
+Parameter `applicationId` should be taken from RMS and is mandatory. Parameter `placement` depends on your RMS configuration. It is required to set different placements if you need to show widget in more than one place in your application with different rewards/settings.
 At this point widget is basically loaded and ready to work. To show it just call:
 
 ```swift
