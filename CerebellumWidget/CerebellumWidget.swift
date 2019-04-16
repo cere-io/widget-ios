@@ -83,7 +83,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
 
     /// Sets widget to sign-up mode and shows it.
     public func showOnboarding() {
-        self.setMode(mode: WidgetMode.LOGIN);
+        self.executeJS(method: "showOnboarding");
     }
     
     private func setMode(mode: WidgetMode) {
