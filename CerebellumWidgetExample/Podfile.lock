@@ -1,5 +1,5 @@
 PODS:
-  - CerebellumWidget (1.1.4):
+  - CerebellumWidget (1.1.5):
     - SwiftyJSON
     - WebViewJavascriptBridge (~> 6.0)
   - SwiftyJSON (4.2.0)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "./../"
 
 SPEC CHECKSUMS:
-  CerebellumWidget: b206ca2868378221d40a476dc9074d4c38af6328
+  CerebellumWidget: 821c9c786ba0feef3695cf826f0e4b487a768b5e
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
