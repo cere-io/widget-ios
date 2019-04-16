@@ -61,15 +61,12 @@ Parameter `placement` depends on your RMS configuration. It is required to set d
 
 | Signature | Description |
 | :-- | :-- |
-| initAndLoad | Initializes widget for the app (with parameters are taken from RMS) and loads widget content |
-| show | Shows the widget if it was hidden or closed |
-| expand | Shows widget expanded on whole screen |
-| restore | Restores widget to normal view size after expanding |
+| init | Constructor. Initializes widget for the app (with parameters from RMS) and loads widget content |
+| show | Shows the widget for specified placement |
 | hide | Hides the widget manually |
-| collapse | Similar to hide, but is triggered when user clicks minimize button in widget (hidden by default) |
 | resize | Resized widget to custom size |
-| sendDataToField | Autofills specified field with value to reduce amount of questions to user (i.e. `email`). |
-| setMode | Sets widget mode. Currently two modes are supported: REWARDS (default one) and LOGIN |
+| setEmail | Sets user email |
+| showOnboarding | Sets widget to onboarding mode and shows it to user |
 | setUserData | Sets data required for some fields of the widget like `name` or `level`. Should be passes as JSON string '{userData: {name: "Junior", level: 1}'
 | logout | Logs out user from widget |
 

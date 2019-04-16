@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class ShowWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
-        widget.show();
+        let json = JSON(data);
+        
+        widget.show(placement: json["placement"].stringValue);
         
         responseCallback?(nil);
     }

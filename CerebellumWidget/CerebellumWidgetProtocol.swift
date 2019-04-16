@@ -11,30 +11,21 @@ import Foundation
 /// Protocol that contains all API methods of CerebellumWidget.
 public protocol CerebellumWidgetProtocol {
     
-    /// This method should show the widget.
-    func show();
+    /// This method should show the widget for specified placement.
+    func show(placement: String);
     
     /// This method should hide the widget.
     func hide();
     
-    /// The method to set values for widget fields (like email, confirm. code, etc.)
-    func sendDataToField(fieldName: String, value: String);
+    /// The method to sets user email.
+    func setEmail(email: String);
     
-    /// The method to set widget mode.
-    func setMode(mode: WidgetMode);
+    /// The method sets widget to sign up mode and shows it.
+    func showOnboarding();
     
     /// The method to set additional data related to current widget user.
     func setUserData(data: String);
-    
-    /// This method should minimize the widget.
-    func collapse();
-    
-    /// This method should expand the widget on full screen.
-    func expand();
-    
-    /// This method should restore the widget to initial size after calling expand().
-    func restore();
-    
+        
     /// Sets custom size for the widget. Parameters should be specified in percentage of screen bounds.
     func resize(left: CGFloat, top: CGFloat, width: CGFloat, height: CGFloat);
     
