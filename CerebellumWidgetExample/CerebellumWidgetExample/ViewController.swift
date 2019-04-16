@@ -48,7 +48,6 @@ class ViewController: UIViewController {
         crbWidget = CerebellumWidget(parentController: self,
                               applicationId: "239",
                               env: Environment.STAGE);
-        crbWidget.show(placement: "top_section_1");
         
         _ = crbWidget.onHide{
             self.logger.text.append("Widget is closing!\n");
@@ -57,7 +56,18 @@ class ViewController: UIViewController {
             self.logger.text.append("Existence of user `\(email)` is requested\n");
             
             callback(Bool.random());
-        };
+        }
+        .onInitializationFinished {
+            self.logger.text.append("Widget initialized.");
+            
+            if (self.crbWidget.hasItems()) {
+                self.logger.text.append("Widget has items to show.");
+                self.crbWidget.show(placement: "top_section_1");
+            } else {
+                self.logger.text.append("Widget has no items.");
+            }
+        }
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

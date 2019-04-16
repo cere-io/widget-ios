@@ -63,8 +63,17 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     public func show(placement: String) {
         self.queueHandler({() in
             self.setView(visible: true);
-            self.executeJS(method: "__showOnNative", withParams: placement);
+            _ = self.executeJS(method: "__showOnNative", withParams: placement);
         });
+    }
+    
+    /// Checks whether widget has items in specified placement. If nothing is specified then it checks if there are items in any placement.
+    public func hasItems(forPlacement: String? = nil) -> Bool {
+        if (self.widgetInitialized) {
+            return self.executeJS(method: "hasItems", withParams: forPlacement ?? "null") == "true";
+        }
+        
+        return false;
     }
     
     /// Hides the widget.
@@ -77,20 +86,20 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     /// Sets user email.
     public func setEmail(email: String) {
         self.queueHandler({() in
-            self.executeJS(method: "sendToField", withParams: "'email', '\(email)'");
+            _ = self.executeJS(method: "sendToField", withParams: "'email', '\(email)'");
         });
     }
 
     /// Sets widget to sign-up mode and shows it.
     public func showOnboarding() {
-        self.executeJS(method: "showOnboarding");
+        _ = self.executeJS(method: "showOnboarding");
     }
     
     private func setMode(mode: WidgetMode) {
         self.mode = mode;
         
         self.queueHandler({() in
-            self.executeJS(method: "setMode", withParams: "'\(String(describing: self.mode).lowercased())'");
+            _ = self.executeJS(method: "setMode", withParams: "'\(String(describing: self.mode).lowercased())'");
         });
     }
     
@@ -106,7 +115,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     ///     }
     public func setUserData(data: String) {
         self.queueHandler({() in
-            self.executeJS(method: "setUserData", withParams: data);
+            _ = self.executeJS(method: "setUserData", withParams: data);
         });
     }
     
@@ -138,13 +147,17 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     /// Logs out of the widget.
     public func logout() {
         self.queueHandler({() in
-            self.executeJS(method: "logout");
+            _ = self.executeJS(method: "logout");
         });
     }
     
     /// Sets handler that is called when widget is finished initialization.
     public func onInitializationFinished(_ handler: @escaping OnInitializationFinishedHandler) -> CerebellumWidget {
         self.onInitializationFinishedHandler = handler;
+        
+        if (self.widgetInitialized) {
+            handler();
+        }
         
         return self;
     }
@@ -199,10 +212,10 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         self.webView!.frame = visible ? self.defaultFrame! : .zero;
     }
     
-    func executeJS(method: String, withParams: String = "") {
+    func executeJS(method: String, withParams: String = "") -> String {
         let js = "window.CRBWidget." + method + "(" + withParams + ");";
         
-        self.bridge?._evaluateJavascript(js);
+        return self.bridge!._evaluateJavascript(js);
     }
     
     func load() {

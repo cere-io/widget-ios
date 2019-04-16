@@ -41,4 +41,4 @@ public typealias OnGetUserByEmailHandler = (_ email: String,
 public typealias GetUserByEmailCallback = (_ exists: Bool) -> Void;
 
 /// Type for onInitializationFinished event handler.
-public typealias OnInitializationFinishedHandler = (_ hasItems: Bool) -> Void;
+public typealias OnInitializationFinishedHandler = () -> Void;

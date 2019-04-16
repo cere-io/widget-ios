@@ -12,7 +12,6 @@ import SwiftyJSON
 class InitializedWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: CerebellumWidget, data: AnyObject, responseCallback: ResponseCallback) {
         let json = JSON(data);
-        let hasItems = json["hasItems"].boolValue;
         let left = json["left"].float;
         let top = json["top"].float;
         let width = json["width"].float;
@@ -27,7 +26,7 @@ class InitializedWrapper : JsProtocolWithResponse {
                           height: CGFloat(height!));
         }
         
-        widget.onInitializationFinishedHandler?(hasItems);
+        widget.onInitializationFinishedHandler?();
         
         responseCallback?(nil);
     }
