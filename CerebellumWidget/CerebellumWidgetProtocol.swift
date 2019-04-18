@@ -14,8 +14,11 @@ public protocol CerebellumWidgetProtocol {
     /// This method should show the widget for specified placement.
     func show(placement: String);
 
-    /// This method should check whether widget has items in specified placement. If nil is specified then it checks if there are items in any placement.
-    func hasItems(forPlacement: String?) -> Bool;
+    /// This method should check whether widget has items in specified placement.
+    func hasItems(forPlacement: String) -> Bool;
+    
+    /// This method should return array of placements that are available for current RMS configuration.
+    func getPlacements() -> [String];
     
     /// This method should hide the widget.
     func hide();

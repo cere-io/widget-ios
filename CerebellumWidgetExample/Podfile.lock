@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "./../"
 
 SPEC CHECKSUMS:
-  CerebellumWidget: 821c9c786ba0feef3695cf826f0e4b487a768b5e
+  CerebellumWidget: 13589466b901eb5b3219e4c9a81ef99d5778e31f
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 

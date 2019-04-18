@@ -58,13 +58,17 @@ class ViewController: UIViewController {
             callback(Bool.random());
         }
         .onInitializationFinished {
-            self.logger.text.append("Widget initialized.");
+            self.logger.text.append("Widget initialized.\n");
             
-            if (self.crbWidget.hasItems()) {
-                self.logger.text.append("Widget has items to show.");
-                self.crbWidget.show(placement: "top_section_1");
-            } else {
-                self.logger.text.append("Widget has no items.");
+            let placements = self.crbWidget.getPlacements();
+            
+            placements.forEach{ placement in
+                if (self.crbWidget.hasItems(forPlacement: placement)) {
+                    self.logger.text.append("Widget has items to show in placement `\(placement)`.\n");
+                    self.crbWidget.show(placement: placement);
+                } else {
+                    self.logger.text.append("Widget has no items in placement `\(placement)`.\n");
+                }
             }
         }
         

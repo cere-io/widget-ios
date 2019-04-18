@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import WebKit
 import WebViewJavascriptBridge
+import SwiftyJSON
 
 /// Class that implements CerebellumWidgetProtocol and provides all the functionality of the widget.
 ///
@@ -68,12 +69,25 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     }
     
     /// Checks whether widget has items in specified placement. If nothing is specified then it checks if there are items in any placement.
-    public func hasItems(forPlacement: String? = nil) -> Bool {
+    public func hasItems(forPlacement: String) -> Bool {
         if (self.widgetInitialized) {
-            return self.executeJS(method: "hasItems", withParams: forPlacement ?? "null") == "true";
+            return self.evaluateJS(method: "hasItems", withParams: forPlacement) == "true";
         }
         
         return false;
+    }
+
+    /// Returns array of placements that are available for current RMS configuration
+    public func getPlacements() -> [String] {
+        if (self.widgetInitialized) {
+            let list = self.evaluateJS(method: "getPlacements");
+            
+            if (list != nil) {
+                return JSON(parseJSON: list!).arrayValue.map { value in value.stringValue };
+            }
+        }
+        
+        return [];
     }
     
     /// Hides the widget.
@@ -212,10 +226,16 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         self.webView!.frame = visible ? self.defaultFrame! : .zero;
     }
     
-    func executeJS(method: String, withParams: String = "") -> String {
+    func executeJS(method: String, withParams: String = "") {
         let js = "window.CRBWidget." + method + "(" + withParams + ");";
         
-        return self.bridge!._evaluateJavascript(js);
+        self.bridge!._evaluateJavascript(js);
+    }
+    
+    func evaluateJS(method: String, withParams: String = "") -> String? {
+        let js = "window.CRBWidget." + method + "(" + withParams + ");";
+        
+        return self.webView?.evaluate(script: js);
     }
     
     func load() {
@@ -333,5 +353,23 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
                                             }
                                          }).map());
         });
+    }
+}
+
+extension WKWebView {
+    func evaluate(script: String) -> String? {
+        var finished = false;
+        var result: String?;
+        
+        evaluateJavaScript("var ____r____ = \(script); JSON.stringify(____r____);") { (r, e) in
+            result = r as! String?;
+            finished = true;
+        }
+        
+        while !finished {
+            RunLoop.current.run(mode: .default, before: Date.distantFuture);
+        }
+        
+        return result;
     }
 }
