@@ -273,7 +273,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Funler LLC";
+				ORGANIZATIONNAME = "Cerebellum Network, Inc.";
 				TargetAttributes = {
 					B5EB4EBC22033530004EA1B5 = {
 						CreatedOnToolsVersion = 10.1;
@@ -582,7 +582,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.cere.CerebellumWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = io.cere.RewardsModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -611,7 +611,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.cere.CerebellumWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = io.cere.RewardsModule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
