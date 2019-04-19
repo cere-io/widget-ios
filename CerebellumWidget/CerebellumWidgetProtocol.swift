@@ -3,7 +3,7 @@
 //  CerebellumWidget
 //
 //  Created by Konstantin on 3/18/19.
-//  Copyright © 2019 Funler LLC. All rights reserved.
+//  Copyright © 2019 Cerebellum Network, Inc. All rights reserved.
 //
 
 import Foundation
@@ -13,6 +13,12 @@ public protocol CerebellumWidgetProtocol {
     
     /// This method should show the widget for specified placement.
     func show(placement: String);
+
+    /// This method should check whether widget has items in specified placement.
+    func hasItems(forPlacement: String) -> Bool;
+    
+    /// This method should return array of placements that are available for current RMS configuration.
+    func getPlacements() -> [String];
     
     /// This method should hide the widget.
     func hide();

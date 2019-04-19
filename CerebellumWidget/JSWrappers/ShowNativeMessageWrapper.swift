@@ -3,7 +3,7 @@
 //  CerebellumWidget
 //
 //  Created by Konstantin on 2/18/19.
-//  Copyright © 2019 Funler LLC. All rights reserved.
+//  Copyright © 2019 Cerebellum Network, Inc. All rights reserved.
 //
 
 import Foundation
@@ -18,7 +18,7 @@ class ShowNativeMessageWrapper : JsProtocolWithResponse {
         
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil));
             
-            widget.parentController!.present(alert, animated: true, completion: nil);
+            widget.parentController.present(alert, animated: true, completion: nil);
         }
         
         responseCallback?(nil);

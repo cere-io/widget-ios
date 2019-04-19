@@ -3,7 +3,7 @@
 //  CerebellumWidget
 //
 //  Created by Konstantin on 2/4/19.
-//  Copyright © 2019 Funler LLC. All rights reserved.
+//  Copyright © 2019 Cerebellum Network, Inc. All rights reserved.
 //
 
 import Foundation
@@ -41,4 +41,4 @@ public typealias OnGetUserByEmailHandler = (_ email: String,
 public typealias GetUserByEmailCallback = (_ exists: Bool) -> Void;
 
 /// Type for onInitializationFinished event handler.
-public typealias OnInitializationFinishedHandler = (_ hasItems: Bool) -> Void;
+public typealias OnInitializationFinishedHandler = () -> Void;

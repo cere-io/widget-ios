@@ -3,20 +3,21 @@
 // CerebellumWidget
 //
 //  Created by Konstantin on 1/31/19.
-//  Copyright © 2019 Funler LLC. All rights reserved.
+//  Copyright © 2019 Cerebellum Network, Inc. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import WebKit
 import WebViewJavascriptBridge
+import SwiftyJSON
 
 /// Class that implements CerebellumWidgetProtocol and provides all the functionality of the widget.
 ///
 public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationDelegate {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
-    var parentController: UIViewController?;
+    var _parentController: UIViewController?;
     var onInitializationFinishedHandler: OnInitializationFinishedHandler?;
     var onGetUserByEmailHandler: OnGetUserByEmailHandler?;
     var onSignInHandler: OnSignInHandler?;
@@ -39,19 +40,15 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     private var heightPercentage: CGFloat = 90;
 
     /// Initializes and prepares the widget for usage.
-    /// - Parameter parentController: controller that will host the widget view and is responsible for showing/hiding the widget.
     /// - Parameter applicationId: identifier of the application from RMS.
     /// - Parameter env: Environment for running the widget (`PRODUCTION` is default).
-    public init(parentController: UIViewController, applicationId: String, env: Environment) {
-        super.init();
-        
+    public func initialize(applicationId: String, env: Environment = Environment.PRODUCTION) {
         determineCurrentVersion();
         
         if (widgetInitialized) {
             return;
         }
 
-        self.parentController = parentController;
         self.appId = applicationId;
         self.env = env;
         
@@ -63,8 +60,30 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     public func show(placement: String) {
         self.queueHandler({() in
             self.setView(visible: true);
-            self.executeJS(method: "__showOnNative", withParams: placement);
+            _ = self.executeJS(method: "__showOnNative", withParams: placement);
         });
+    }
+    
+    /// Checks whether widget has items in specified placement. If nothing is specified then it checks if there are items in any placement.
+    public func hasItems(forPlacement: String) -> Bool {
+        if (self.widgetInitialized) {
+            return self.evaluateJS(method: "hasItems", withParams: forPlacement) == "true";
+        }
+        
+        return false;
+    }
+
+    /// Returns array of placements that are available for current RMS configuration
+    public func getPlacements() -> [String] {
+        if (self.widgetInitialized) {
+            let list = self.evaluateJS(method: "getPlacements");
+            
+            if (list != nil) {
+                return JSON(parseJSON: list!).arrayValue.map { value in value.stringValue };
+            }
+        }
+        
+        return [];
     }
     
     /// Hides the widget.
@@ -77,20 +96,20 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     /// Sets user email.
     public func setEmail(email: String) {
         self.queueHandler({() in
-            self.executeJS(method: "sendToField", withParams: "'email', '\(email)'");
+            _ = self.executeJS(method: "sendToField", withParams: "'email', '\(email)'");
         });
     }
 
     /// Sets widget to sign-up mode and shows it.
     public func showOnboarding() {
-        self.setMode(mode: WidgetMode.LOGIN);
+        _ = self.executeJS(method: "showOnboarding");
     }
     
     private func setMode(mode: WidgetMode) {
         self.mode = mode;
         
         self.queueHandler({() in
-            self.executeJS(method: "setMode", withParams: "'\(String(describing: self.mode).lowercased())'");
+            _ = self.executeJS(method: "setMode", withParams: "'\(String(describing: self.mode).lowercased())'");
         });
     }
     
@@ -106,7 +125,7 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     ///     }
     public func setUserData(data: String) {
         self.queueHandler({() in
-            self.executeJS(method: "setUserData", withParams: data);
+            _ = self.executeJS(method: "setUserData", withParams: data);
         });
     }
     
@@ -138,13 +157,17 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     /// Logs out of the widget.
     public func logout() {
         self.queueHandler({() in
-            self.executeJS(method: "logout");
+            _ = self.executeJS(method: "logout");
         });
     }
     
     /// Sets handler that is called when widget is finished initialization.
     public func onInitializationFinished(_ handler: @escaping OnInitializationFinishedHandler) -> CerebellumWidget {
         self.onInitializationFinishedHandler = handler;
+        
+        if (self.widgetInitialized) {
+            handler();
+        }
         
         return self;
     }
@@ -187,6 +210,17 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         return self;
     }
     
+    /// Sets parent view controller that will host the widget view and is responsible for showing/hiding the widget. If the property is not set then current top most view controller is used.
+    public var parentController: UIViewController {
+        get {
+            return self._parentController != nil ? self._parentController! : UIApplication.getTopMostViewController()!;
+        }
+        
+        set(controller) {
+            self._parentController = controller;
+        }
+    }
+
     func queueHandler(_ handler: @escaping () -> Void) {
         if (widgetInitialized) {
             handler();
@@ -202,7 +236,13 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     func executeJS(method: String, withParams: String = "") {
         let js = "window.CRBWidget." + method + "(" + withParams + ");";
         
-        self.bridge?._evaluateJavascript(js);
+        self.bridge!._evaluateJavascript(js);
+    }
+    
+    func evaluateJS(method: String, withParams: String = "") -> String? {
+        let js = "window.CRBWidget." + method + "(" + withParams + ");";
+        
+        return self.webView?.evaluate(script: js);
     }
     
     func load() {
@@ -211,13 +251,13 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         attachBridge();
         loadContent();
     }
-    
+
     func createViewAndAddAsSubview() {
         let configuration = WKWebViewConfiguration();
         
         self.webView = WKWebView(frame: .zero, configuration: configuration);
         self.webView!.navigationDelegate = self;
-        self.parentController!.view.addSubview(self.webView!);
+        self.parentController.view.addSubview(self.webView!);
     }
     
     func initWidgetSize() {

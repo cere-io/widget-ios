@@ -3,7 +3,7 @@
 //  CerebellumWidget
 //
 //  Created by Konstantin on 1/31/19.
-//  Copyright © 2019 Funler LLC. All rights reserved.
+//  Copyright © 2019 Cerebellum Network, Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

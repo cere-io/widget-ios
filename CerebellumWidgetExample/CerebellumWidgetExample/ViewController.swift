@@ -10,12 +10,14 @@ import UIKit
 import CerebellumWidget
 
 class ViewController: UIViewController {
-    var crbWidget: CerebellumWidget!;
+    var crbWidget = CerebellumWidget();
     
     @IBOutlet var logger: UITextView!;
     
     @IBAction func showRewardsButtonClicked(sender: Any) {
-        crbWidget.show(placement: "top_section_1");
+        let placements = crbWidget.getPlacements();
+        
+        crbWidget.show(placement: placements.count > 0 ? placements[0] : "default");
     }
     
     @IBAction func showLoginButtonClicked(sender: Any) {
@@ -45,10 +47,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        crbWidget = CerebellumWidget(parentController: self,
-                              applicationId: "239",
-                              env: Environment.STAGE);
-        crbWidget.show(placement: "top_section_1");
+        crbWidget.parentController = self;
+        crbWidget.initialize(applicationId: "239",
+                             env: Environment.STAGE);
         
         _ = crbWidget.onHide{
             self.logger.text.append("Widget is closing!\n");
@@ -57,7 +58,22 @@ class ViewController: UIViewController {
             self.logger.text.append("Existence of user `\(email)` is requested\n");
             
             callback(Bool.random());
-        };
+        }
+        .onInitializationFinished {
+            self.logger.text.append("Widget initialized.\n");
+            
+            let placements = self.crbWidget.getPlacements();
+            
+            placements.forEach{ placement in
+                if (self.crbWidget.hasItems(forPlacement: placement)) {
+                    self.logger.text.append("Widget has items to show in placement `\(placement)`.\n");
+                    self.crbWidget.show(placement: placement);
+                } else {
+                    self.logger.text.append("Widget has no items in placement `\(placement)`.\n");
+                }
+            }
+        }
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
