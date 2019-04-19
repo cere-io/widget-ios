@@ -39,13 +39,11 @@ You need to add the widget to any View you would like.
 
     ...
 
-    let crbWidget = CerebellumWidget();
+    var crbWidget = CerebellumWidget();
 
     ...
 
-    self.crbWidget.initAndLoad(
-        parentController: self,
-        applicationId: "777");
+    self.crbWidget.initialize(applicationId: "777");
 ```
 
 Parameter `applicationId` should be taken from RMS and is mandatory. 
@@ -61,7 +59,7 @@ Parameter `placement` depends on your RMS configuration. It is required to set d
 
 | Signature | Description |
 | :-- | :-- |
-| init | Constructor. Initializes widget for the app (with parameters from RMS) and loads widget content |
+| initialize | Initializes widget for the specified `applicationId` configuration from RMS and loads widget content |
 | show | Shows the widget for specified placement |
 | hide | Hides the widget manually |
 | resize | Resized widget to custom size |

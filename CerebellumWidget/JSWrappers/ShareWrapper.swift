@@ -13,7 +13,7 @@ class ShareWrapper : JsProtocolWithResponse {
         
         let activityController = UIActivityViewController.init(activityItems: NSMutableArray.init(object: data) as! [Any], applicationActivities: nil);
         
-        widget.parentController!.present(activityController, animated: true, completion: nil);
+        widget.parentController.present(activityController, animated: true, completion: nil);
         
         responseCallback?(nil);
     }

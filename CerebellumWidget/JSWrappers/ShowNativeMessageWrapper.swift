@@ -18,7 +18,7 @@ class ShowNativeMessageWrapper : JsProtocolWithResponse {
         
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil));
             
-            widget.parentController!.present(alert, animated: true, completion: nil);
+            widget.parentController.present(alert, animated: true, completion: nil);
         }
         
         responseCallback?(nil);

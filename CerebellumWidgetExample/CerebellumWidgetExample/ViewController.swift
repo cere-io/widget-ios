@@ -10,12 +10,14 @@ import UIKit
 import CerebellumWidget
 
 class ViewController: UIViewController {
-    var crbWidget: CerebellumWidget!;
+    var crbWidget = CerebellumWidget();
     
     @IBOutlet var logger: UITextView!;
     
     @IBAction func showRewardsButtonClicked(sender: Any) {
-        crbWidget.show(placement: "top_section_1");
+        let placements = crbWidget.getPlacements();
+        
+        crbWidget.show(placement: placements.count > 0 ? placements[0] : "default");
     }
     
     @IBAction func showLoginButtonClicked(sender: Any) {
@@ -45,9 +47,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        crbWidget = CerebellumWidget(parentController: self,
-                              applicationId: "239",
-                              env: Environment.STAGE);
+        crbWidget.parentController = self;
+        crbWidget.initialize(applicationId: "239",
+                             env: Environment.STAGE);
         
         _ = crbWidget.onHide{
             self.logger.text.append("Widget is closing!\n");

@@ -17,7 +17,7 @@ import SwiftyJSON
 public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationDelegate {
     var webView: WKWebView?;
     var bridge: WebViewJavascriptBridge?;
-    var parentController: UIViewController?;
+    var _parentController: UIViewController?;
     var onInitializationFinishedHandler: OnInitializationFinishedHandler?;
     var onGetUserByEmailHandler: OnGetUserByEmailHandler?;
     var onSignInHandler: OnSignInHandler?;
@@ -40,19 +40,15 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     private var heightPercentage: CGFloat = 90;
 
     /// Initializes and prepares the widget for usage.
-    /// - Parameter parentController: controller that will host the widget view and is responsible for showing/hiding the widget.
     /// - Parameter applicationId: identifier of the application from RMS.
     /// - Parameter env: Environment for running the widget (`PRODUCTION` is default).
-    public init(parentController: UIViewController, applicationId: String, env: Environment) {
-        super.init();
-        
+    public func initialize(applicationId: String, env: Environment = Environment.PRODUCTION) {
         determineCurrentVersion();
         
         if (widgetInitialized) {
             return;
         }
 
-        self.parentController = parentController;
         self.appId = applicationId;
         self.env = env;
         
@@ -214,6 +210,17 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         return self;
     }
     
+    /// Sets parent view controller that will host the widget view and is responsible for showing/hiding the widget. If the property is not set then current top most view controller is used.
+    public var parentController: UIViewController {
+        get {
+            return self._parentController != nil ? self._parentController! : UIApplication.getTopMostViewController()!;
+        }
+        
+        set(controller) {
+            self._parentController = controller;
+        }
+    }
+
     func queueHandler(_ handler: @escaping () -> Void) {
         if (widgetInitialized) {
             handler();
@@ -244,13 +251,13 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         attachBridge();
         loadContent();
     }
-    
+
     func createViewAndAddAsSubview() {
         let configuration = WKWebViewConfiguration();
         
         self.webView = WKWebView(frame: .zero, configuration: configuration);
         self.webView!.navigationDelegate = self;
-        self.parentController!.view.addSubview(self.webView!);
+        self.parentController.view.addSubview(self.webView!);
     }
     
     func initWidgetSize() {
@@ -353,23 +360,5 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
                                             }
                                          }).map());
         });
-    }
-}
-
-extension WKWebView {
-    func evaluate(script: String) -> String? {
-        var finished = false;
-        var result: String?;
-        
-        evaluateJavaScript("var ____r____ = \(script); JSON.stringify(____r____);") { (r, e) in
-            result = r as! String?;
-            finished = true;
-        }
-        
-        while !finished {
-            RunLoop.current.run(mode: .default, before: Date.distantFuture);
-        }
-        
-        return result;
     }
 }

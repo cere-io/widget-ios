@@ -26,7 +26,7 @@ class ShareWithWrapper : JsProtocolWithResponse {
         
             controller?.setInitialText(data);
         
-            widget.parentController!.present(controller!, animated: true, completion: nil);
+            widget.parentController.present(controller!, animated: true, completion: nil);
         } else {
             var url: URL? = nil;
             
@@ -77,7 +77,7 @@ class ShareWithWrapper : JsProtocolWithResponse {
             
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil));
             
-            widget.parentController!.present(alert, animated: true, completion: nil);
+            widget.parentController.present(alert, animated: true, completion: nil);
         }
         
         return true;
