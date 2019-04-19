@@ -60,14 +60,14 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
     public func show(placement: String) {
         self.queueHandler({() in
             self.setView(visible: true);
-            _ = self.executeJS(method: "__showOnNative", withParams: placement);
+            _ = self.executeJS(method: "show", withParams: "\"\(placement)\"");
         });
     }
     
     /// Checks whether widget has items in specified placement. If nothing is specified then it checks if there are items in any placement.
     public func hasItems(forPlacement: String) -> Bool {
         if (self.widgetInitialized) {
-            return self.evaluateJS(method: "hasItems", withParams: forPlacement) == "true";
+            return self.evaluateJS(method: "hasItems", withParams: "\"\(forPlacement)\"") == "true";
         }
         
         return false;
