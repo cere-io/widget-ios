@@ -8,7 +8,7 @@ This project allows with a quick and simple interface to include Cerebellum insi
 
 The easiest way to integrate widget to iOS application is to use CocoaPods. In your Podfile add the following line:
 
-    pod 'CerebellumWidget', :git => 'git@github.com:funler/widget-ios.git'
+    pod 'CerebellumWidget', :git => 'git@github.com:cere-io/widget-ios.git'
 
 then run the following command to install new pod:
 
