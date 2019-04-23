@@ -146,7 +146,7 @@ public class RewardsModule: NSObject, RewardsModuleProtocol, WKNavigationDelegat
     ///     super.viewWillTransition(to: size, with: coordinator);
     ///
     ///     coordinator.animate(alongsideTransition: nil, completion: { _ in
-    ///         self.crbWidget.redraw();
+    ///         self.rewardsModule.redraw();
     ///     });
     /// }
     public func redraw() {

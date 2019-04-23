@@ -42,7 +42,7 @@ public protocol RewardsModuleProtocol {
     ///     super.viewWillTransition(to: size, with: coordinator);
     ///
     ///     coordinator.animate(alongsideTransition: nil, completion: { _ in
-    ///         self.crbWidget.redraw();
+    ///         self.rewardsModule.redraw();
     ///     });
     /// }
     func redraw();
