@@ -93,10 +93,10 @@ public class CerebellumWidget: NSObject, CerebellumWidgetProtocol, WKNavigationD
         });
     }
 
-    /// Sets user email.
-    public func setEmail(email: String) {
+    /// Sets email or phone as username.
+    public func setUsername(_ username: String) {
         self.queueHandler({() in
-            _ = self.executeJS(method: "sendToField", withParams: "'email', '\(email)'");
+            _ = self.executeJS(method: "sendToField", withParams: "'username', '\(username)'");
         });
     }
 

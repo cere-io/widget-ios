@@ -23,8 +23,8 @@ public protocol CerebellumWidgetProtocol {
     /// This method should hide the widget.
     func hide();
     
-    /// The method to sets user email.
-    func setEmail(email: String);
+    /// Sets email or phone as username.
+    func setUsername(_ username: String);
     
     /// The method sets widget to sign up mode and shows it.
     func showOnboarding();

@@ -63,7 +63,7 @@ Parameter `placement` depends on your RMS configuration. It is required to set d
 | show | Shows the widget for specified placement |
 | hide | Hides the widget manually |
 | resize | Resized widget to custom size |
-| setEmail | Sets user email |
+| setUsername | Sets email or phone as username |
 | hasItems | Returns true if there are items for specified `placement` |
 | getPlacements | Returns array of placements that are available for current RMS configuration |
 | showOnboarding | Sets widget to onboarding mode and shows it to user |
