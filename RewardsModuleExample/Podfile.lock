@@ -1,0 +1,27 @@
+PODS:
+  - RewardsModule (2.0.2):
+    - SwiftyJSON
+    - WebViewJavascriptBridge (~> 6.0)
+  - SwiftyJSON (4.2.0)
+  - WebViewJavascriptBridge (6.0.3)
+
+DEPENDENCIES:
+  - RewardsModule (from `./../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftyJSON
+    - WebViewJavascriptBridge
+
+EXTERNAL SOURCES:
+  RewardsModule:
+    :path: "./../"
+
+SPEC CHECKSUMS:
+  RewardsModule: e5247c83502a7dfa7d7a490a4841a39e36cc2986
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
+
+PODFILE CHECKSUM: 0ec3ab8b62be40f1a5127c49491da57ad55e21b5
+
+COCOAPODS: 1.5.3

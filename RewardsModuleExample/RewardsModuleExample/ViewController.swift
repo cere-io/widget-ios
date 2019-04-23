@@ -10,48 +10,48 @@ import UIKit
 import RewardsModule
 
 class ViewController: UIViewController {
-    var crbWidget = RewardsModule();
+    var rewardsModule = RewardsModule();
     
     @IBOutlet var logger: UITextView!;
     
     @IBAction func showRewardsButtonClicked(sender: Any) {
-        let placements = crbWidget.getPlacements();
+        let placements = rewardsModule.getPlacements();
         
-        crbWidget.show(placement: placements.count > 0 ? placements[0] : "default");
+        rewardsModule.show(placement: placements.count > 0 ? placements[0] : "default");
     }
     
     @IBAction func showLoginButtonClicked(sender: Any) {
-        crbWidget.showOnboarding();
+        rewardsModule.showOnboarding();
     }
     
     @IBAction func hideButtonClicked(sender: Any) {
-        crbWidget.hide();
+        rewardsModule.hide();
     }
     
     var resized = false;
     
     @IBAction func resize(sender: Any) {
         if (!resized) {
-            crbWidget.resize(left: 50, top: 5, width: 50, height: 95);
+            rewardsModule.resize(left: 50, top: 5, width: 50, height: 95);
         } else {
-            crbWidget.resize(left: 5, top: 5, width: 90, height: 90);
+            rewardsModule.resize(left: 5, top: 5, width: 90, height: 90);
         }
         
         resized = !resized;
     }
     
     @IBAction func logoutButtonClicked(sender: Any) {
-        crbWidget.logout();
+        rewardsModule.logout();
     }
     
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        crbWidget.parentController = self;
-        crbWidget.initialize(applicationId: "239",
+        rewardsModule.parentController = self;
+        rewardsModule.initialize(applicationId: "239",
                              env: Environment.STAGE);
         
-        _ = crbWidget.onHide{
+        _ = rewardsModule.onHide{
             self.logger.text.append("Widget is closing!\n");
         }
         .onGetUserByEmail {email, callback in
@@ -62,12 +62,12 @@ class ViewController: UIViewController {
         .onInitializationFinished {
             self.logger.text.append("Widget initialized.\n");
             
-            let placements = self.crbWidget.getPlacements();
+            let placements = self.rewardsModule.getPlacements();
             
             placements.forEach{ placement in
-                if (self.crbWidget.hasItems(forPlacement: placement)) {
+                if (self.rewardsModule.hasItems(forPlacement: placement)) {
                     self.logger.text.append("Widget has items to show in placement `\(placement)`.\n");
-                    self.crbWidget.show(placement: placement);
+                    self.rewardsModule.show(placement: placement);
                 } else {
                     self.logger.text.append("Widget has no items in placement `\(placement)`.\n");
                 }
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         
         coordinator.animate(alongsideTransition: nil, completion: { _ in
             
-            self.crbWidget.redraw();
+            self.rewardsModule.redraw();
         });
     }
 }

@@ -50,7 +50,7 @@ Parameter `applicationId` should be taken from RMS and is mandatory.
 At this point widget is basically loaded and ready to work. To show it just call:
 
 ```swift
-    self.crbWidget.show(placement: "MyAppPlacement");
+    self.rewardsModule.show(placement: "MyAppPlacement");
 ```
 Parameter `placement` depends on your RMS configuration. It is required to set different placements if you need to show widget in more than one place in your application with different rewards/settings.
 
