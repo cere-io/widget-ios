@@ -96,7 +96,7 @@ public class RewardsModule: NSObject, RewardsModuleProtocol, WKNavigationDelegat
     /// Sets email or phone as username.
     public func setUsername(_ username: String) {
         self.queueHandler({() in
-            _ = self.executeJS(method: "sendToField", withParams: "'username', '\(username)'");
+            _ = self.executeJS(method: "setUsername", withParams: "'\(username)'");
         });
     }
 
