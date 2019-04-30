@@ -25,7 +25,10 @@ public protocol RewardsModuleProtocol {
     
     /// Sets email or phone as username.
     func setUsername(_ username: String);
-    
+
+    /// Sets additional id for the user that will be sent within conversion server call.
+    func identifyUser(_ externalUserId: String);
+
     /// The method sets widget to sign up mode and shows it.
     func showOnboarding();
     

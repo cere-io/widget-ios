@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RewardsModule"
-  s.version      = "2.0.3"
+  s.version      = "2.1.0"
   s.summary      = "Rewards Module SDK for iOS."
   s.description  = "The library includes all the stuff required to embed Rewards Module to your iOS application."
   s.homepage     = "http://cere.io"

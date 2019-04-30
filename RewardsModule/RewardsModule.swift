@@ -100,6 +100,13 @@ public class RewardsModule: NSObject, RewardsModuleProtocol, WKNavigationDelegat
         });
     }
 
+    /// Sets additional id for the user that will be sent within conversion server call.
+    public func identifyUser(_ externalUserId: String) {
+        self.queueHandler({() in
+            _ = self.executeJS(method: "identifyUser", withParams: "'\(externalUserId)'");
+        });
+    }
+
     /// Sets widget to sign-up mode and shows it.
     public func showOnboarding() {
         _ = self.executeJS(method: "showOnboarding");
