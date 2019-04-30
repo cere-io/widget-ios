@@ -28,8 +28,6 @@ class ShareWithWrapper : JsProtocolWithResponse {
         
             widget.parentController.present(controller!, animated: true, completion: nil);
         } else {
-            var url: URL? = nil;
-            
             guard let params = data.addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
                 print("shareWithWrapper: incorrect data provided.");
 
@@ -37,23 +35,29 @@ class ShareWithWrapper : JsProtocolWithResponse {
             };
             
             if (appId == "telegram") {
-                url = URL(string: "tg://msg?text=\(params)");
+                openUrl(url: URL(string: "tg://msg?text=\(params)"));
             } else if (appId == "instagram") {
-                url = URL(string: "instagram://msg?text=\(params)");
-                
-                UIPasteboard.general.string = data;
-            }
-            
-            if (url != nil) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil);
-                } else {
-                    UIApplication.shared.openURL(url!);
-                };
+                Helpers.showAlert(controller: widget.parentController,
+                                  title: "Message",
+                                  message: "The link was copied to the clipboard. To get a reward, send it to any user.",
+                                  clickHandler: { _ in
+                                    UIPasteboard.general.string = data;
+                                    self.openUrl(url: URL(string: "https://www.instagram.com/"));
+                });
             }
         }
         
         responseCallback?(nil);
+    }
+    
+    private func openUrl(url: URL?) {
+        if (url != nil) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil);
+            } else {
+                UIApplication.shared.openURL(url!);
+            };
+        }
     }
     
     private func appIsInstalled(_ appId: String?, _ widget: RewardsModule) -> Bool {
@@ -73,11 +77,9 @@ class ShareWithWrapper : JsProtocolWithResponse {
         }
         
         if (!UIApplication.shared.canOpenURL(URL(string: "\(url)://app")!)) {
-            let alert = UIAlertController(title: "Message", message: "You do not have this application. Download it in App Store to share our url.", preferredStyle: UIAlertController.Style.alert);
-            
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil));
-            
-            widget.parentController.present(alert, animated: true, completion: nil);
+            Helpers.showAlert(controller: widget.parentController,
+                              title: "Message",
+                              message: "You do not have this application. Download it in App Store to share our url.");
         }
         
         return true;
