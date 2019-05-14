@@ -23,6 +23,7 @@ public class RewardsModule: NSObject, RewardsModuleProtocol, WKNavigationDelegat
     var onSignInHandler: OnSignInHandler?;
     var onSignUpHandler: OnSignUpHandler?;
     var onHideHandler: OnHideHandler?;
+    var onGetClaimedRewardsHandler: OnGetClaimedRewardsHandler?;
 
     internal var env: Environment = Environment.PRODUCTION;
     private var mode: WidgetMode = WidgetMode.REWARDS;
@@ -330,6 +331,16 @@ public class RewardsModule: NSObject, RewardsModuleProtocol, WKNavigationDelegat
 
     private func setupDefaultHandlers() {
         self.queueHandler({() in
+            self.bridge?.registerHandler("onGetClaimedRewards",
+                                         handler: OnGetClaimedRewardsHandlerMapper({(
+                                            callback: @escaping GetClaimedRewardsCallback) in
+                                            if (self.onGetClaimedRewardsHandler != nil) {
+                                                self.onGetClaimedRewardsHandler!(callback);
+                                            } else {
+                                                callback([]);
+                                            }
+                                         }).map());
+            
             self.bridge?.registerHandler("onGetUserByEmail",
                                          handler: OnGetUserByEmailHandlerMapper({(
                                             email: String,

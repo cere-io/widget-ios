@@ -73,7 +73,15 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
+        .onGetClaimedRewards { callback in
+            callback([ClaimedRewardItem(
+                title: "Some title",
+                imageUrl: "http://example.img/",
+                price: 1.0,
+                currency: "TKN",
+                redemptionInstructions: "None",
+                additionalInfo: [])]);
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
