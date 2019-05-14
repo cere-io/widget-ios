@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RewardsModule"
-  s.version      = "2.2.0"
+  s.version      = "2.2.1"
   s.summary      = "Rewards Module SDK for iOS."
   s.description  = "The library includes all the stuff required to embed Rewards Module to your iOS application."
   s.homepage     = "http://cere.io"
@@ -27,6 +27,6 @@ Pod::Spec.new do |s|
   s.swift_version = "4.2" 
 
   s.dependency "WebViewJavascriptBridge", "~>6.0"
-  s.dependency "SwiftyJSON"
+  s.dependency "SwiftyJSON", "4.2.0"
 
 end
