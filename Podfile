@@ -5,7 +5,7 @@ target 'RewardsModule' do
   use_frameworks!
   # Pods for RewardsModule
   pod 'WebViewJavascriptBridge', '~>6.0'
-  pod 'SwiftyJSON'
+  pod 'SwiftyJSON', '4.2.0'
 
 target 'RewardsModuleTests' do
     inherit! :search_paths
