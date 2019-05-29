@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RewardsModule"
-  s.version      = "2.2.1"
+  s.version      = "2.2.2"
   s.summary      = "Rewards Module SDK for iOS."
   s.description  = "The library includes all the stuff required to embed Rewards Module to your iOS application."
   s.homepage     = "http://cere.io"
@@ -19,12 +19,12 @@ Pod::Spec.new do |s|
   s.author             = { "Cerebellum Network, Inc." => "info@cere.io" }
 
   s.platform     = :ios, "9.0"
-  
+
   s.source       = { :git => "git@github.com:cere-io/widget-ios.git", :tag => s.version }
 
   s.source_files  = "RewardsModule/**/*.swift"
 
-  s.swift_version = "4.2" 
+  s.swift_version = "4.2"
 
   s.dependency "WebViewJavascriptBridge", "~>6.0"
   s.dependency "SwiftyJSON", "4.2.0"
