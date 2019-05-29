@@ -226,6 +226,10 @@ public class RewardsModule: NSObject, RewardsModuleProtocol, WKNavigationDelegat
         
         set(controller) {
             self._parentController = controller;
+
+            if (self.webView != nil) {
+                self.parentController.view.addSubview(self.webView!);
+            }
         }
     }
 
