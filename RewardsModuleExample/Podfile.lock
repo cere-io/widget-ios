@@ -1,5 +1,5 @@
 PODS:
-  - RewardsModule (2.2.1):
+  - RewardsModule (2.2.3):
     - SwiftyJSON (= 4.2.0)
     - WebViewJavascriptBridge (~> 6.0)
   - SwiftyJSON (4.2.0)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "./../"
 
 SPEC CHECKSUMS:
-  RewardsModule: 14237d8101d83fa10da20a630101c190a27360d8
+  RewardsModule: cf87bfcfa4e989d34356454bd6e5dcd37b48d03b
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
 
