@@ -12,18 +12,18 @@ import SwiftyJSON
 class InitializedWrapper : JsProtocolWithResponse {
     override func handleEvent(widget: RewardsModule, data: AnyObject, responseCallback: ResponseCallback) {
         let json = JSON(data);
-        let left = json["left"].float;
-        let top = json["top"].float;
-        let width = json["width"].float;
-        let height = json["height"].float;
+        let left = json["left"].floatValue;
+        let top = json["top"].floatValue;
+        let width = json["width"].floatValue;
+        let height = json["height"].floatValue;
         
         widget.setInitialized();
         
-        if (left != nil && top != nil && width != nil && height != nil) {
-            widget.resize(left: CGFloat(left!),
-                          top: CGFloat(top!),
-                          width: CGFloat(width!),
-                          height: CGFloat(height!));
+        if (width != 0 && height != 0) {
+            widget.resize(left: CGFloat(left),
+                          top: CGFloat(top),
+                          width: CGFloat(width),
+                          height: CGFloat(height));
         }
         
         widget.onInitializationFinishedHandler?();

@@ -144,7 +144,7 @@ public class RewardsModule: NSObject, RewardsModuleProtocol, WKNavigationDelegat
         self.widthPercentage = width;
         self.heightPercentage = height;
         
-        self.redraw();
+        self.initWidgetSize();
     }
     
     /// Refreshes screen bounds and redraws the widget. This method should be called inside handler of parent view.
