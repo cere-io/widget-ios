@@ -26,14 +26,14 @@ That's it. Or you can use classic way:
 
 ```swift
     #import "../../../widget-ios/RewardsModule/RewardsModule/RewardsModule.h"
-``` 
+```
 
 This can be done in any Header bridge you may have.
 
 ## Usage
 
 You need to add the widget to any View you would like.
-    
+
 ```swift
     import RewardsModule;
 
@@ -46,7 +46,7 @@ You need to add the widget to any View you would like.
     self.rewardsModule.initialize(applicationId: "777");
 ```
 
-Parameter `applicationId` should be taken from RMS and is mandatory. 
+Parameter `applicationId` should be taken from RMS and is mandatory.
 At this point widget is basically loaded and ready to work. To show it just call:
 
 ```swift
@@ -67,7 +67,7 @@ Parameter `placement` depends on your RMS configuration. It is required to set d
 | hasItems | Returns true if there are items for specified `placement` |
 | getPlacements | Returns array of placements that are available for current RMS configuration |
 | showOnboarding | Sets widget to onboarding mode and shows it to user |
-| setUserData | Sets data required for some fields of the widget like `name` or `level`. Should be passes as JSON string '{userData: {name: "Junior", level: 1}'
+| setUserData | Sets data required for some fields of the widget like `name`. Should be passes as JSON string '{userData: {name: "Junior"}}'
 | logout | Logs out user from widget |
 
 ### Events
