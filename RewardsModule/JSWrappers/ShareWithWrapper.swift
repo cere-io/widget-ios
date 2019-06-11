@@ -39,7 +39,7 @@ class ShareWithWrapper : JsProtocolWithResponse {
             } else if (appId == "instagram") {
                 Helpers.showAlert(controller: widget.parentController,
                                   title: "Message",
-                                  message: "The link was copied to the clipboard. To get a reward, send it to any user.",
+                                  message: "The link was copied to the clipboard. To get a reward, share the link with any user and get them to sign up.",
                                   clickHandler: { _ in
                                     UIPasteboard.general.string = data;
                                     self.openUrl(url: URL(string: "https://www.instagram.com/"));
